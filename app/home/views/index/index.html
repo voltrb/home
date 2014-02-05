@@ -1,0 +1,17 @@
+<:title>
+  {#template params._view.or('home'), "title"}
+</:title>
+
+<:body>
+  <div id='wrap'>
+    <:volt:notices />
+    {#template 'shared/header'}
+  
+    <div class='container'>
+      {#template params._view.or('home')}
+    </div>
+  </div>
+  
+  {#template 'shared/footer'}
+</:body>
+

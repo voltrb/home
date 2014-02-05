@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'proxima_nova';
+  src: url('/assets/fonts/proximanova-regular.eot');
+  src: url('/assets/fonts/proximanova-regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/proximanova-regular.woff') format('woff'),
+       url('/assets/fonts/proximanova-regular.ttf') format('truetype'),
+       url('/assets/fonts/proximanova-regular.svg#proxima_novaregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_nova';
+  src: url('/assets/fonts/proximanova-light.eot');
+  src: url('/assets/fonts/proximanova-light.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/proximanova-light.woff') format('woff'),
+       url('/assets/fonts/proximanova-light.ttf') format('truetype'),
+       url('/assets/fonts/proximanova-light.svg#proxima_novalight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  position:relative;
+  transition-duration: .5s;
+  -webkit-backface-visibility: hidden;
+}
+
+body{
+  #wrap > .container > *{
+      -webkit-transition-timing-function: ease-in;
+      -webkit-transition-duration: .5s;
+      -webkit-animation: fadeLeft .5s; /* Safari and Chrome */
+         -moz-animation: fadeLeft .5s; /* Firefox */
+          -ms-animation: fadeLeft .5s; /* Internet Explorer */
+           -o-animation: fadeLeft .5s; /* Opera */
+              animation: fadeLeft .5s;
+  }
+
+  &.right{
+    #wrap > .container > *{
+      -webkit-transition-timing-function: ease-in;
+      -webkit-transition-duration: .5s;
+      -webkit-animation: fadeRight .5s; /* Safari and Chrome */
+         -moz-animation: fadeRight .5s; /* Firefox */
+          -ms-animation: fadeRight .5s; /* Internet Explorer */
+           -o-animation: fadeRight .5s; /* Opera */
+              animation: fadeRight .5s;
+    }
+  }
+}
+
+
+
+
+/* Safari and Chrome */
+@-webkit-keyframes fadeLeft {
+  from{ 
+    opacity: 0;
+    -webkit-transform:translateX(-500px);
+  }
+  to{
+    opacity: 1; 
+    -webkit-transform:translateX(0px);
+  }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadeRight {
+  from{ 
+    opacity: 0;
+    -webkit-transform:translateX(500px);
+  }
+  to{
+    opacity: 1; 
+    -webkit-transform:translateX(0px);
+  }
+}
+
+
+
+
+html, body {
+  height: 100%;
+  padding:0px;
+  font-family:proxima nova;
+  font-weight:300;
+  font-size:16px;
+  background:#f3f3f5;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -200px;
+  padding: 0 0 240px;
+  &> .container {
+    padding: 120px 15px 0;
+  }
+}
+
+#header{
+  background:white;
+  a{
+    text-shadow:none;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:13px;
+    line-height:30px;
+  }
+  &.navbar-default .navbar-nav > .active > a {
+    background:#FCFCFC;
+  }
+  
+}
+
+h1[id]{
+  width:0px;
+  white-space:nowrap;
+  padding-top:60px;
+  margin-top:-60px;
+//  &:before{  
+//    content:"";
+//    visibility: hidden;
+//    height:60px;
+//    width:1px;
+//    margin-top:-60px;
+//    display:block; /* required for webkit browsers */
+//  }
+}
+
+#footer {
+  padding:20px 0px;
+  background:#b3454b;
+  height:200px;
+  &>.container{
+    max-width:920px;
+  }
+  a{
+    color:white;
+  }
+}
+
+.notices{
+  z-index:9999;
+}
+
