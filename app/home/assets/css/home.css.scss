@@ -79,7 +79,6 @@ body{
 
 
 
-
 html, body {
   height: 100%;
   padding:0px;
@@ -111,10 +110,13 @@ html, body {
   &.navbar-default .navbar-nav > .active > a {
     background:#FCFCFC;
   }
+  #logo{
+    height:22px;
+  }
   
 }
 
-h1[id]{
+h1[id], h2[id], h3[id]{
   width:0px;
   white-space:nowrap;
   padding-top:60px;
@@ -143,5 +145,9 @@ h1[id]{
 
 .notices{
   z-index:9999;
+}
+
+ol .active{
+  background:red;
 }
 
