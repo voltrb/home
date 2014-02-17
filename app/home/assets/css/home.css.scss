@@ -1,22 +1,22 @@
 @font-face {
-  font-family: 'proxima_nova';
-  src: url('/assets/fonts/proximanova-regular.eot');
-  src: url('/assets/fonts/proximanova-regular.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/proximanova-regular.woff') format('woff'),
-       url('/assets/fonts/proximanova-regular.ttf') format('truetype'),
-       url('/assets/fonts/proximanova-regular.svg#proxima_novaregular') format('svg');
+  font-family: 'Open Sans';
+  src: url('/assets/fonts/OpenSans-Regular.eot');
+  src: url('/assets/fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/OpenSans-Regular.woff') format('woff'),
+       url('/assets/fonts/OpenSans-Regular.ttf') format('truetype'),
+       url('/assets/fonts/OpenSans-Regular.svg#OpenSans_Regular') format('svg');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'proxima_nova';
-  src: url('/assets/fonts/proximanova-light.eot');
-  src: url('/assets/fonts/proximanova-light.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/proximanova-light.woff') format('woff'),
-       url('/assets/fonts/proximanova-light.ttf') format('truetype'),
-       url('/assets/fonts/proximanova-light.svg#proxima_novalight') format('svg');
-  font-weight: 300;
+  font-family: 'Roboto';
+  src: url('/assets/fonts/roboto-bold.eot');
+  src: url('/assets/fonts/roboto-bold.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/roboto-bold.woff') format('woff'),
+       url('/assets/fonts/roboto-bold.ttf') format('truetype'),
+       url('/assets/fonts/roboto-bold.svg#roboto_bold') format('svg');
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -308,17 +308,8 @@ table, table.table{
     position:relative;
     z-index:99;
     height:22px;
-    font-family:'Outage';
-    font-size:24px;
-    line-height:1;
-    color:white;
-    top:2px;
-    i{
-      position:relative;
-      top:-1px;
-      margin-left:6px;
-      font-size:22px;
-      color:gray;
+    img{
+      height:22px;
     }
   }
   
@@ -334,6 +325,7 @@ table, table.table{
 }
 
 .affix-bottom{
+  top:auto !important;
   position:relative;
 }
 
@@ -465,9 +457,9 @@ h1[id], h2[id], h3[id]{
       margin-top:220px;
       font-size:140px;
       color:white;
+      -webkit-transition-timing-function: ease-in;
+      transition-duration:.1s;
       &:hover{
-        -webkit-transition-timing-function: ease-in;
-        transition-duration:.2s;
         font-size:150px;
         top:-5px;
       }

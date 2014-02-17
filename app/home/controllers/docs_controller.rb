@@ -14,7 +14,7 @@ class DocsController < ModelController
       });
       
       $('table').addClass('table table-bordered table-condensed table-striped table-responsive');
-      
+      console.log('docs dom ready')
      
     }
   end

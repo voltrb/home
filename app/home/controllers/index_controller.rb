@@ -21,7 +21,7 @@ class IndexController < ModelController
       $('.affix').affix({
         offset: {
           top: 240
-        , bottom: 0
+        , bottom: 800
         }
       });
       
@@ -34,7 +34,7 @@ class IndexController < ModelController
           $('.affix').affix({
             offset: {
               top: 240
-            , bottom: 0
+            , bottom: 800
             }
           });
           
