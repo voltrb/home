@@ -9,16 +9,18 @@ class DocsController < ModelController
   def dom_ready
     %x{    
       prettyPrint();
-      $('h1, h2, h3').attr('id', function(){
+      $('.col-md-9').find('h1, h2, h3').attr('id', function(){
         return $(this).text().toLowerCase().replace(/[\*\^\'\!]/g, '').split(' ').join('-');
       });
       
-      $('h1, h2, h3').attr('name', function(){
-        return $(this).text().toLowerCase().replace(/[\*\^\'\!]/g, '').split(' ').join('-');
-      });
+      $('table').addClass('table table-bordered table-condensed table-striped table-responsive');
       
-      $('body').scrollspy({ target: '#spy-list' });
+     
     }
+  end
+  
+  def dom_removed
+    
   end
 
 end

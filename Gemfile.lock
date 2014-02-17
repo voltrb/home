@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kacperk/sockjs-ruby.git
-  revision: 66e566c51ba60d7b1421b67d2b86f4c389741600
+  revision: 72f715fb3173c44f0ce28a884c62670e6424dbef
   specs:
-    sockjs (0.3.4.3)
+    sockjs (0.3.4.4)
       faye-websocket (~> 0.7.1)
       json
       rack
@@ -12,14 +12,14 @@ GIT
 
 GIT
   remote: https://github.com/opal/opal-jquery.git
-  revision: ce26192d014f9e015678b6b6c51779f6abb6a9fc
+  revision: 1814202085f168176231b877b2b7a967b75b0726
   specs:
     opal-jquery (0.1.2)
       opal (>= 0.5.0, < 1.0.0)
 
 GIT
   remote: https://github.com/opal/opal.git
-  revision: 85220f32136c74ac93f1cb721462324a3423cf44
+  revision: cbca29d6cb9b11bc788113f6663512f3b00c1805
   specs:
     opal (0.6.0)
       source_map
@@ -42,10 +42,10 @@ GEM
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
     ffi (1.9.3)
-    github-markup (1.0.1)
+    github-markup (1.0.2)
     hike (1.2.3)
     json (1.8.1)
-    listen (2.4.0)
+    listen (2.4.1)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -68,7 +68,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
-    redcarpet (3.0.0)
+    redcarpet (3.1.0)
     regin (0.3.8)
     rspec (3.0.0.beta1)
       rspec-core (= 3.0.0.beta1)
@@ -104,7 +104,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    volt (0.5.11)
+    volt (0.6.3)
       bson_ext (~> 1.9.0)
       listen (~> 2.4.0)
       mongo (~> 1.9.0)

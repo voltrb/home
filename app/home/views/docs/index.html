@@ -3,75 +3,84 @@ Docs
 </:title>
 
 <:body>
-  <div class='row'>
-    <div class='col-md-3'>
-      <div class='sidebar affix' data-spy="affix">
-        <ul id='spy-list'>
-        <li>
-        <a href="#rendering">Rendering</a>
+  <div class='page-header'>
+    <div class='container'>
+      <h1>Docs</h1>
+    </div>
+  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-3 hidden-xs hidden-sm'>
+        <div id='spy' class='sidebar nav nav-list affix'>
+          <div class='navbar-example'>
+            <ol>
+            <li>
+            <a href="#rendering">Rendering</a>
 
-        <ol>
-        <li>
-        <a href="#reactive-values">Reactive Values</a>
+            <ol>
+            <li>
+            <a href="#reactive-values">Reactive Values</a>
 
-        <ol>
-        <li><a href="#reactivevalue-gotchyas">ReactiveValue Gotchyas</a></li>
-        </ol>
-        </li>
-        <li>
-        <a href="#bindings">Bindings</a>
+            <ol>
+            <li><a href="#reactivevalue-gotchyas">ReactiveValue Gotchyas</a></li>
+            </ol>
+            </li>
+            <li>
+            <a href="#bindings">Bindings</a>
 
-        <ol>
-        <li><a href="#content-binding">Content Binding</a></li>
-        <li><a href="#if-binding">If Binding</a></li>
-        <li><a href="#each-binding">Each Binding</a></li>
-        <li><a href="#attribute-bindings">Attribute Bindings</a></li>
-        </ol>
-        </li>
-        </ol>
-        </li>
-        <li>
-        <a href="#models">Models</a>
+            <ol>
+            <li><a href="#content-binding">Content Binding</a></li>
+            <li><a href="#if-binding">If Binding</a></li>
+            <li><a href="#each-binding">Each Binding</a></li>
+            <li><a href="#attribute-bindings">Attribute Bindings</a></li>
+            </ol>
+            </li>
+            </ol>
+            </li>
+            <li>
+            <a href="#models">Models</a>
 
-        <ol>
-        <li><a href="#provided-collections">Provided Collections</a></li>
-        <li><a href="#reactive-models">Reactive Models</a></li>
-        <li><a href="#model-events">Model Events</a></li>
-        <li><a href="#automatic-model-conversion">Automatic Model Conversion</a></li>
-        </ol>
-        </li>
-        <li><a href="#controllers">Controllers</a></li>
-        <li>
-        <a href="#components">Components</a>
+            <ol>
+            <li><a href="#provided-collections">Provided Collections</a></li>
+            <li><a href="#reactive-models">Reactive Models</a></li>
+            <li><a href="#model-events">Model Events</a></li>
+            <li><a href="#automatic-model-conversion">Automatic Model Conversion</a></li>
+            </ol>
+            </li>
+            <li><a href="#controllers">Controllers</a></li>
+            <li>
+            <a href="#components">Components</a>
 
-        <ol>
-        <li><a href="#assets">Assets</a></li>
-        <li><a href="#component-generator">Component Generator</a></li>
-        <li>
-        <a href="#provided-components">Provided Components</a>
+            <ol>
+            <li><a href="#assets">Assets</a></li>
+            <li><a href="#component-generator">Component Generator</a></li>
+            <li>
+            <a href="#provided-components">Provided Components</a>
 
-        <ol>
-        <li><a href="#notices">Notices</a></li>
-        <li><a href="#flash">Flash</a></li>
-        </ol>
-        </li>
-        </ol>
-        </li>
-        <li><a href="#controls">Controls</a></li>
-        <li>
-        <a href="#routes">Routes</a>
+            <ol>
+            <li><a href="#notices">Notices</a></li>
+            <li><a href="#flash">Flash</a></li>
+            </ol>
+            </li>
+            </ol>
+            </li>
+            <li><a href="#controls">Controls</a></li>
+            <li>
+            <a href="#routes">Routes</a>
 
-        <ol>
-        <li><a href="#routes-file">Routes file</a></li>
-        </ol>
-        </li>
-        </ol>
+            <ol>
+            <li><a href="#routes-file">Routes file</a></li>
+            </ol>
+            </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-9'>
+        <div class='border-left'>
+          {#template 'readme'}
+        </div>
       </div>
     </div>
-    <div class='col-md-9' style='font-family:open sans; font-weight:400'>
-      <h1>Docs</h1>
-      {#template 'readme'}
-    </div>
-  
   </div>
 </:body>

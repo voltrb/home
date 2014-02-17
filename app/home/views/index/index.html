@@ -6,10 +6,8 @@
   <div id='wrap'>
     <:volt:notices />
     {#template 'shared/header'}
-  
-    <div class='container'>
-      {#template params._view.or('home')}
-    </div>
+    <div id='header-spacer'></div>
+    {#template params._view.or('home')}
   </div>
   
   {#template 'shared/footer'}

@@ -32,7 +32,7 @@
 }
 
 /* Put a border around prettyprinted code snippets. */
-pre.prettyprint {
-  background:#f8f8f8;
-  border:1px solid #ddd;
+.prettyprint {
+  background:#E1E6E8;
+  border:1px solid #B9BEC0;
 }

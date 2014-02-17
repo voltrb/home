@@ -6,6 +6,7 @@ gem 'volt'
 gem 'volt-bootstrap'
 gem "redcarpet"
 gem 'github-markup'
+# gem 'volt-google-maps', path: '~/sites/components/volt-google-maps'
 
 # Needed at the moment
 gem 'opal', git: 'https://github.com/opal/opal.git'
