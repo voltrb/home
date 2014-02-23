@@ -97,6 +97,18 @@ body{
   }
 }
 
+::selection{
+	background:#00B6EA;
+	color:white;
+	text-shadow:none;
+}
+
+::-moz-selection{
+	background:#00B6EA;
+	color:white;
+	text-shadow:none;;
+}
+
 .form-control:focus{
   -webkit-transition-timing-function: ease-in;
   -webkit-transition-duration: .2s;
@@ -106,8 +118,6 @@ body{
        -o-animation: pulse .5s; /* Opera */
           animation: pulse .5s;
 }
-
-
 
 html, body {
   height: 100%;
@@ -326,6 +336,11 @@ table, table.table{
 
 .affix-bottom{
   top:auto !important;
+  position:absolute;
+  bottom:200px;
+}
+
+.affix-fix{
   position:relative;
 }
 

@@ -1,4 +1,4 @@
-<:body>
+<:Body>
   <div id='header' class="navbar navbar-default navbar-fixed-top" role='navigation'>
     <div class='container'>
       <div class='navbar-header' >
@@ -27,13 +27,11 @@
           </li>
         </ul>
       </div>
-  
     </div>
   </div>
-</:body>
 
-<:nav>
+<:Nav>
   <li class="nav-link {#if params._view.or('') == page}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
     <a href="/{page}">{text}</a>
   </li>
-</:nav>
+  

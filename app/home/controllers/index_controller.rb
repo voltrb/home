@@ -7,11 +7,13 @@ class IndexController < ModelController
   
   def dom_ready
     %x{
+      $('body').attr('data-spy', 'scroll');
+      
+      prettyPrint();
+      
       $('.navbar-collapse a').click(function(){
         $('.navbar-collapse').toggleClass('in').toggleClass('collapse')
       });
-      
-      $('body').attr('data-spy', 'scroll');
       
       $('body').on('activate.bs.scrollspy', function () {
         $('.last-active').removeClass('last-active');
@@ -21,7 +23,6 @@ class IndexController < ModelController
       $('.affix').affix({
         offset: {
           top: 240
-        , bottom: 800
         }
       });
       
@@ -31,10 +32,10 @@ class IndexController < ModelController
     params._view.on('changed') do
       if true
         %x{
+          prettyPrint();
           $('.affix').affix({
             offset: {
               top: 240
-            , bottom: 800
             }
           });
           
@@ -50,7 +51,7 @@ class IndexController < ModelController
   end
   
   def add_contact
-    self._contacts << page._new_contact.to_h.cur
+    self._contacts << page._new_contact.cur
     page._new_contact = {}
   end
   
@@ -72,31 +73,8 @@ class IndexController < ModelController
     }
   end
   
-  def nav_click(i)
-    # %x{
-    #   oldLoc = $('body').data('loc');
-    #   $('body').data('loc', i);
-    #   console.log(i, oldLoc)
-    #   if(i > oldLoc){
-    #     $('body').addClass('right')
-    #   }else{
-    #     $('body').removeClass('right')
-    #   }
-    # }
-  end
-  
   def escape(string)
-    string.gsub(/[&\"<>]/, TABLE_FOR_ESCAPE_HTML__)
+    string.gsub('<', '&lt;').gsub('>', '&gt;')
   end
-  
-  TABLE_FOR_ESCAPE_HTML__ = {
-      "'" => '&#39;',
-      '&' => '&amp;',
-      '"' => '&quot;',
-      '<' => '&lt;',
-      '>' => '&gt;',
-      '{' => '{"&#123;"}',
-      '}' => '{38.chr + "#125;"}'
-    }
 
 end
