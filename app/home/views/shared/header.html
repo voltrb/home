@@ -15,11 +15,11 @@
 
       <div class='navbar-collapse collapse'>
         <ul class="nav navbar-nav navbar-right">
-          <:nav page="" text="Home" i='0' />
-          <:nav page="getting_started" text="Getting Started" i='1' />
-          <:nav page="docs" text="Docs" i='3' />
-          <:nav page="api" text="API" i='4' />
-          <:nav page="community" text="Community" i='5' />
+          <:nav href="/" text="Home" i='0' />
+          <:nav href="/getting_started" text="Getting Started" i='1' />
+          <:nav href="/docs" text="Docs" i='3' />
+          <:nav href="/api" text="API" i='4' />
+          <:nav href="/community" text="Community" i='5' />
           <li class='nav-link'>
             <a href='https://github.com/voltrb/volt/' target='_blank' title='View Github Repo'>
               <i class='fa fa-github' />
@@ -29,3 +29,9 @@
       </div>
     </div>
   </div>
+
+<:Nav>
+  <li class="nav-link {#if @url.path.split('/')[1] == @href.split('/')[1]}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
+    <a href="{@href}">{@text}</a>
+  </li>
+
