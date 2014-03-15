@@ -25,6 +25,11 @@ GIT
       source_map
       sprockets
 
+PATH
+  remote: ~/sites/components/volt-google-maps
+  specs:
+    volt-google-maps (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -136,3 +141,4 @@ DEPENDENCIES
   sockjs!
   volt
   volt-bootstrap
+  volt-google-maps!

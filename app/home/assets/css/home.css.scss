@@ -195,19 +195,21 @@ table, table.table{
   }
 }
 
-.pre-tabs{
+.pre-tabs.nav-tabs{
   border-bottom:0;
   position:relative;
   z-index:99;
   li{
-    a{
+    > a{
       font-size:13px;
       transition-duration:.2s;
+      &:hover{
+        border-bottom:0;
+      }
     }
     &.active > a{
       border: 1px solid #B9BEC0;
-    //    border-bottom:0;
-      }
+    }
   }
 }
 
@@ -380,6 +382,9 @@ h1[id], h2[id], h3[id]{
   }
   a{
     color:white;
+  }
+  p{
+    color:#BDC0CA;
   }
   .footer-col{
     width:20%;

@@ -128,7 +128,7 @@
       </div>
     </div>
     
-    <br /><br />
+    <br /><br /><br /><br />
     
     
     <div class='row'>
@@ -138,48 +138,72 @@
             <div class='col-md-6'>
               <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
               <table>
-                {#each _contacts as contact}
-                  <tr e-click="set_index(index)" class="{#if params._index.to_i == index}selected{/}">
-                    <td>{contact._name}</td>
-                    <td><button e-click='remove_contact(index)'>X</button></td>
-                  </tr>
+                {#if _contacts}
+                  {#each _contacts as contact}
+                    <tr e-click="set_index(index)" class="{#if params._index.to_i == index}selected{/}">
+                      <td>{contact._name}</td>
+                      <td><button e-click='remove_contact(index)'>X</button></td>
+                    </tr>
+                  {/}
+                {#else}
+                  <p>Add a contact above</p>
                 {/}
               </table>
             </div>
             <div class='col-md-6'>
+              <h4>{_current_contact._name.or('No Contact Selected')}</h4>
               {#if _current_contact}
-                <h4>{_current_contact._name}</h4>
-                <input type='text' value='{_current_contact._name}' class='form-control' />
-                <textarea value='{_current_contact._address}' class='form-control' />
+                <input type='text' value='{_current_contact._name}' class='form-control' placeholder="Enter a name..." />
+                <textarea value='{_current_contact._address}' class='form-control' placeholder="Enter {_current_contact._name}'s address..." />
               {#else}
-                <p>Select a contact.</p>
+                <p>Please elect a contact.</p>
               {/}
             </div>
           </div>
         </div>
       </div>
       <div class='col-md-6'>
-        <h2>Select, Edit, Add Fields</h2>
+        <p>Let's add a way to select and edit a contact.  We add a wrapper around each contact with <code class='prettyprint'>{escape("e-click='{set_index(index)}'")}</code>.  When clicked, this triggers the controller's set_index method.</p>
       </div>
     </div>
     
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <ul class='nav nav-tabs pre-tabs'>
+          <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
+            <a>views/home.html</a>
+          </li>
+          <li class='{_tabs._h2}' e-click='select(event)'>
+            <a>index_controller.rb</a>
+          </li>
+        </ul>
+        <pre class='pre-with-tabs'>
+<code class='active prettyprint lang-html'>{escape("...\r\r{#each _contacts as contact}\r  <div e-click='set_index(index)'>\r    {contact._name}\r    <button e-click='remove_contact(index)'>X</button>\r  </div>\r{/}\n")}{escape("{#if _current_contact}\r  <input type='text' value='{_current_contact._name}' />\r  <textarea value='{_current_contact._address}' />\r{#else}\r  <p>Please select a contact.</p>\r{/}")}</code><code class='prettyprint'>{escape("...\r\rdef set_index(index)\r  params._index = index\r  self._current_contact = _contacts[params._index.to_i]\rend")}</code></pre>
+      </div>
+    </div>
     
-    <div class='well'>
-      <div class='row'>
-        <div class='col-md-6'>
-          <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
-          <table>
-            {#each _contacts as contact}
-              <tr>
-                <td>{contact._name}</td>
-                <td><button e-click='remove_contact(index)'>X</button></td>
-                <td><input type='checkbox' value='{contact._mapped}' e-change='update_map' /></td>
-              </tr>
-            {/}
-          </table>
-        </div>
-        <div class='col-md-6'>
-
+    <br /><br /><br /><br />
+    
+    <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+        <div class='well'>
+          <div class='row'>
+            <div class='col-md-4'>
+              <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+              <table>
+                {#each _contacts as contact}
+                  <tr>
+                    <td>{contact._name}</td>
+                    <td><button e-click='remove_contact(index)'>X</button></td>
+                    <td><input type='checkbox' value='{contact._mapped}' e-change='update_map' /></td>
+                  </tr>
+                {/}
+              </table>
+            </div>
+            <div class='col-md-8'>
+              <google-maps />
+            </div>
+          </div>
         </div>
       </div>
     </div>
