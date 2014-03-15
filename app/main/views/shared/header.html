@@ -31,7 +31,7 @@
   </div>
 
 <:Nav>
-  <li class="nav-link {#if @url.path.split('/')[1] == @href.split('/')[1]}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
+  <li class="nav-link {#if url.path.split('/')[1] == @href.split('/')[1]}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
     <a href="{@href}">{@text}</a>
   </li>
 
