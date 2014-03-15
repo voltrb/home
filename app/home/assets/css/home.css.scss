@@ -29,7 +29,8 @@ $red2:#bb585e;
 $blue1:#56a4b8;
 $blue2:#71b8ca;
 $blue4:#a6e7f8;
-$font-size-base:50px;
+
+$sm-width:770px;
 
 * {
   position:relative;
@@ -174,6 +175,11 @@ h2{
 label{
   text-transform:uppercase;
   font-family:'Roboto';
+  &.complete{
+    color:#B1B7BD;
+    text-decoration:line-through;
+    -webkit-transition-duration: .05s;
+  }
 }
 
 table, table.table{
@@ -224,6 +230,10 @@ table, table.table{
   code.active{
     display:inline;
   }
+}
+
+input[type='checkbox']{
+  width:20px;
 }
 
 .well{
@@ -293,6 +303,10 @@ table, table.table{
   background:#1A1E1F;
   background-image:linear-gradient(#262C2E, #1A1E1F);
   box-shadow:rgba(0,0,0,.3) 0px 2px 4px;
+  @media screen and (max-width:$sm-width){
+    position:relative;
+    margin:0px;
+  }
   .nav{
     a{
       font-family:'Helvetica Neue';
@@ -331,6 +345,9 @@ table, table.table{
 
 #header-spacer{
   height:48px;
+  @media screen and (max-width:$sm-width){
+    height:0px;
+  }
 }
 
 .affix{

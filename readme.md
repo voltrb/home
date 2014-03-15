@@ -1,5 +1,3 @@
-ANONYMOUS PRO or INCONSOLATA for monospaced font
-
 switch to https://github.com/jayferd/rouge for highlighting
 
 
@@ -16,19 +14,19 @@ sparked
 plug
 supercharge
 
-basic name input {_name}
 
-change name to store on _contacts
+syncing via {_name}
 
-@model = store
+changing class via checkbox
+  - {_complete}
 
-add contact
-remove contact
+model saving via {store._posts[0]}
 
-edit contact name
+association
+  - {_posts[0]._comments << _new_comment}
 
-add address
-remove address
+validation
+
 
 # Run this to convert the github readme into html
 ruby bin/convert_readme.rb

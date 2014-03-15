@@ -47,7 +47,26 @@
       </div>
       <div class='col-md-6'>
         <h2>Reactive makes syncing easy.</h2>
-        <p>Enter your name to the left to check out the awesome syncage.  We use these "{}" mustache looking things to run ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
+        <p>Enter your name to the left to check out the awesome syncage.  We use these "&#123; &#125;" mustache looking things to run ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
+      </div>
+    </div>
+    
+    <br /><br />
+    
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <div class='well'>
+          {_items[0].inspect}
+          {#each _items as item}
+            <label class='{#if item._complete}complete{/}'>
+              <input type='checkbox' checked='{item._complete}' />
+              {item._name}
+            </label>
+          {/}
+        </div>
+        <br />
+        <br />
+
       </div>
     </div>
   
