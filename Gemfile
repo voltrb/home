@@ -7,7 +7,7 @@ gem 'volt-bootstrap'
 gem "redcarpet"
 gem 'github-markup'
 gem "posix-spawn"  ### this is for github markup and should be not needed when they update it next
-gem 'volt-google-maps', path: '~/sites/components/volt-google-maps'
+# gem 'volt-google-maps', path: '~/sites/components/volt-google-maps'
 
 # Needed at the moment
 gem 'opal', git: 'https://github.com/opal/opal.git'
