@@ -1,13 +1,207 @@
 <:Title>
-  Volt - {#template params._controller.or('index') + '/' + params._action.or('home'), "title"}
+  Home
 
 <:Body>
-  <div id='wrap'>
-    <:volt:notices />
-    {#template 'shared/header'}
-    <div id='header-spacer'></div>
-    {#template params._controller.or('index') + '/' + params._action.or('home')}
+  <div id='intro-wrapper'>
+    <div id='intro'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-md-8'>
+            <h1>Volt is a framework for building<br /> data rich web applications<br />shockingly fast.</h1>
+            <a href='' class='btn btn-default btn-lg'>Play Video <i class='fa fa-play' /></a> <a href='/getting_started' class='btn btn-default btn-lg'>Get Started <i class='fa fa-code' /></a>
+          </div>
+          <div class='col-md-4 text-center'>
+            <i class='fa fa-youtube-play' />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  {#template 'shared/footer'}
-
+  <div class='blue1'>
+    <div class='container text-center'>
+      {#template 'social_buttons'}
+    </div>
+  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <h2>Make the most of your time.</h2>
+        <p>Volt is a reactive web framework where your ruby code runs on both the server and the client (via <a href='http://opalrb.org/' target='_blank'>opal</a>). The dom automatically updates as the user interacts with the page, intelligently updating only the nodes that need to be changed. Data can easily be stored on the page, in a cookie, or in a database powered by <a href='http://www.mongodb.org/' target='_blank'>MongoDB</a>.  Take a look at the demo below, or jump into <a href='/getting_started'>getting started</a>.</p>
+      </div>
+    </div>
+    <br /><br />
+    
+    <div class='row'>
+      <div class='col-md-6'>
+        <br /><br /><br /><br />
+        <div class='well'>
+          <div class='row'>
+            <div class='col-md-6'>
+              <input type='text' value='{_name}' class='form-control' placeholder='Enter your name...'>
+            </div>
+            <div class='col-md-6'>
+              <label>Name:</label> {_name}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <h2>Reactive makes syncing easy.</h2>
+        <p>Enter your name to the left to check out the awesome syncage.  We use these "{}" mustache looking things to run ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
+      </div>
+    </div>
+  
+    <br /><br />
+    
+    <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+        <div class='well'>
+          <div class='row'>
+            <div class='col-md-3'>
+              <label>Permanent Text</label>
+              <span class='help-block'>Keep it clean kids.</span>
+            </div>
+            <div class='col-md-9'>
+              <textarea value='{_text}' class='form-control' rows='4' placeholder='Enter anything you want...' />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._text' />")}</code>.  You'll notice that all we had to do to save the data was prepend the word store to our reactive value <code class='prettyprint'>{{{{_text}}}}</code>.  Pretty easy right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
+      </div>
+    </div>
+    
+    <br /><br />
+    
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <h2>Let's make a quick app.</h2>
+        <p>One of the best parts about Volt is how simple it is to do both reactive syncing, and oldschool crud. This simple app is going to show just how far a little bit of code can go with Volt.  We start by adding a form with an input text field and a button to our view.  In our view below, we have 3 elements.  A form that triggers the add_contact method in the controller, an input field that sets the reactive value for <code class='prettyprint'>page._new_contact._name</code> </p>
+      </div>
+    </div>
+    
+    <div class='row'>
+      <div class='col-md-4 col-md-offset-1'>
+        <div class='well'>
+          <h4>New Contact</h4>
+          <form e-submit='add_contact'>
+            <table>
+              <tr>
+                <td>
+                  <input type='text' value='{page._new_contact._name}' class='form-control'>
+                </td>
+                <td>
+                  <button class='btn btn-sm btn-default'>Create Contact</button>
+                </td>
+              </tr>
+            </table>            
+          </form>
+          <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+          <table class='table'>
+            {#each _contacts as contact}
+              <tr>
+                <td>{contact._name}</td>
+                <td><button e-click='remove_contact(index)'>X</button></td>
+              </tr>
+            {/}
+          </table>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <ul class='nav nav-tabs pre-tabs'>
+          <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
+            <a>views/home.html</a>
+          </li>
+          <li class='{_tabs._h2}' e-click='select(event)'>
+            <a>index_controller.rb</a>
+          </li>
+        </ul>
+        <pre class='pre-with-tabs'>
+<code class='active prettyprint'>{escape("<form e-submit='add_contact'>\r  <input type='text' value='page._new_contact._name' />\r</form>\r\r{#each _contacts as contact}\r  {contact._name}\r  <button e-click='remove_contact(index)'>X</button>\r{/}")}</code><code class='prettyprint'>{escape("def add_contact\r  self._contacts << page._new_contact.cur\r  page._new_contact = {}\rend\r\rdef remove_contact(index)\r  self._contacts.delete_at(index)\rend")}</code></pre>
+      </div>
+    </div>
+    
+    <br /><br /><br /><br />
+    
+    
+    <div class='row'>
+      <div class='col-md-6'>
+        <div class='well'>
+          <div class='row'>
+            <div class='col-md-6'>
+              <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+              <table>
+                {#if _contacts}
+                  {#each _contacts as contact}
+                    <tr e-click="set_index(index)" class="{#if params._index.to_i == index}selected{/}">
+                      <td>{contact._name}</td>
+                      <td><button e-click='remove_contact(index)'>X</button></td>
+                    </tr>
+                  {/}
+                {#else}
+                  <p>Add a contact above</p>
+                {/}
+              </table>
+            </div>
+            <div class='col-md-6'>
+              <h4>{_current_contact._name.or('No Contact Selected')}</h4>
+              {#if _current_contact}
+                <input type='text' value='{_current_contact._name}' class='form-control' placeholder="Enter a name..." />
+                <textarea value='{_current_contact._address}' class='form-control' placeholder="Enter {_current_contact._name}'s address..." />
+              {#else}
+                <p>Please elect a contact.</p>
+              {/}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <p>Let's add a way to select and edit a contact.  We add a wrapper around each contact with <code class='prettyprint'>{escape("e-click='{set_index(index)}'")}</code>.  When clicked, this triggers the controller's set_index method.</p>
+      </div>
+    </div>
+    
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-3'>
+        <ul class='nav nav-tabs pre-tabs'>
+          <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
+            <a>views/home.html</a>
+          </li>
+          <li class='{_tabs._h2}' e-click='select(event)'>
+            <a>index_controller.rb</a>
+          </li>
+        </ul>
+        <pre class='pre-with-tabs'>
+<code class='active prettyprint lang-html'>{escape("...\r\r{#each _contacts as contact}\r  <div e-click='set_index(index)'>\r    {contact._name}\r    <button e-click='remove_contact(index)'>X</button>\r  </div>\r{/}\n")}{escape("{#if _current_contact}\r  <input type='text' value='{_current_contact._name}' />\r  <textarea value='{_current_contact._address}' />\r{#else}\r  <p>Please select a contact.</p>\r{/}")}</code><code class='prettyprint'>{escape("...\r\rdef set_index(index)\r  params._index = index\r  self._current_contact = _contacts[params._index.to_i]\rend")}</code></pre>
+      </div>
+    </div>
+    
+    <br /><br /><br /><br />
+    
+    <div class='row'>
+      <div class='col-md-8 col-md-offset-2'>
+        <div class='well'>
+          <div class='row'>
+            <div class='col-md-4'>
+              <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+              <table>
+                {#each _contacts as contact}
+                  <tr>
+                    <td>{contact._name}</td>
+                    <td><button e-click='remove_contact(index)'>X</button></td>
+                    <td><input type='checkbox' value='{contact._mapped}' e-change='update_map' /></td>
+                  </tr>
+                {/}
+              </table>
+            </div>
+            <div class='col-md-8'>
+              <google-maps />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

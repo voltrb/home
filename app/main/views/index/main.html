@@ -1,0 +1,13 @@
+<:Title>
+  Volt - {#template params._controller.or('index') + '/' + params._action.or('home'), "title"}
+
+<:Body>
+  <div id='wrap'>
+    <:volt:notices />
+    {#template 'shared/header'}
+    <div id='header-spacer'></div>
+    {#template params._controller.or('index') + '/' + params._action.or('home')}
+  </div>
+
+  {#template 'shared/footer'}
+
