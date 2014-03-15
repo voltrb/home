@@ -1,10 +1,5 @@
-class IndexController < ModelController
+class MainController < ModelController
   model :page
-
-  def initialize(*args)
-    puts "INIT MODEL INDEX CONTROLLER"
-    super
-  end
 
   def dom_ready
     %x{
