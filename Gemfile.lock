@@ -56,6 +56,7 @@ GEM
     mongo (1.9.2)
       bson (~> 1.9.2)
     multi_json (1.9.0)
+    posix-spawn (0.3.8)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -126,6 +127,7 @@ DEPENDENCIES
   github-markup
   opal!
   opal-jquery!
+  posix-spawn
   redcarpet
   sockjs!
   volt

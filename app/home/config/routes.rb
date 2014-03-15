@@ -1,8 +1,8 @@
-get "/getting_started", _controller: 'getting_started'
-get "/examples", _controller: 'examples'
-get "/docs", _controller: 'docs'
-get "/api", _controller: 'api'
-get "/community", _controller: 'community'
+get "/getting_started", _action: 'getting_started'
+get "/examples", _action: 'examples'
+get "/docs", _action: 'docs'
+get "/api", _action: 'api'
+get "/community", _action: 'community'
 
 # The main route
 get '/'

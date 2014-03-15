@@ -34,7 +34,7 @@ $font-size-base:50px;
 * {
   position:relative;
   transition-duration: .5s;
-  -webkit-backface-visibility: hidden;
+  //-webkit-backface-visibility: hidden;
 }
 
 body{
@@ -177,10 +177,9 @@ label{
 }
 
 table, table.table{
-  border:0;
   width:100%;
-  tr{
-    border:0;
+  thead{
+    border:1px solid black;
     th{
       border:1px solid black;
       background:#2C3334;
@@ -189,8 +188,11 @@ table, table.table{
       font-weight:700;
       text-shadow:rgba(0,0,0,1) 0px 1px;
     }
+  }
+  tr{
     td{
       border:1px solid #B9BEC0;
+      background:#ECEDF0;
     }
   }
 }

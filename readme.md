@@ -1,4 +1,6 @@
-ANONYMOUS PRO for monospaced font
+ANONYMOUS PRO or INCONSOLATA for monospaced font
+
+switch to https://github.com/jayferd/rouge for highlighting
 
 
 shockingly
@@ -28,8 +30,5 @@ edit contact name
 add address
 remove address
 
-
-::LIST OF CUNFUSION::
-$(function(){
-  
-});
+# Run this to convert the github readme into html
+ruby bin/convert_readme.rb

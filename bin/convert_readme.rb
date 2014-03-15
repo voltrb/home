@@ -14,4 +14,4 @@ content = open(file).read
   "<pre class='prettyprint lang-ruby'>#{$2}</pre>"
 end
 
-File.open(destination, 'w'){|file| file.write('<:body>' + @doc + '</:body>')}
+File.open(destination, 'w'){|file| file.write('<:Body>' + @doc)}

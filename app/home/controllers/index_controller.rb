@@ -1,23 +1,13 @@
 class IndexController < ModelController
   model :page
 
-  def initialize
-    super
-  end
-  
   def dom_ready
     %x{
-      $('body').attr('data-spy', 'scroll');
-      
+      console.log('dom ready')
       prettyPrint();
       
       $('.navbar-collapse a').click(function(){
         $('.navbar-collapse').toggleClass('in').toggleClass('collapse')
-      });
-      
-      $('body').on('activate.bs.scrollspy', function () {
-        $('.last-active').removeClass('last-active');
-        $('.active').last().addClass('last-active');
       });
       
       $('.affix').affix({
@@ -27,9 +17,16 @@ class IndexController < ModelController
       });
       
       $('body').scrollspy();
+      
+      $('body').on('activate.bs.scrollspy', function () {
+        $('.last-active').removeClass('last-active');
+        $('.active').last().addClass('last-active');
+      });
+      
+      $('table').addClass('table table-bordered table-condensed table-responsive');
     }
     
-    params._view.on('changed') do
+    params._controller.on('changed') do
       if true
         %x{
           prettyPrint();
