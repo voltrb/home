@@ -12,7 +12,7 @@
           <img src='/assets/images/logo.png' />
         </a>
       </div>
-  
+
       <div class='navbar-collapse collapse'>
         <ul class="nav navbar-nav navbar-right">
           <:nav page="" text="Home" i='0' />
@@ -31,7 +31,7 @@
   </div>
 
 <:Nav>
-  <li class="nav-link {#if params._view.or('') == page}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
-    <a href="/{page}">{text}</a>
+  <li class="nav-link {#if params._controller.or('') == @page}active{/}" e-click="parent.nav_click(i)" data-loc='{i}'>
+    <a href="/{@page}">{@text}</a>
   </li>
-  
+
