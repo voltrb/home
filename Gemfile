@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'volt'
+gem 'volt'#, path: '/Users/ryanstout/Sites/volt/volt'
 
 # Twitter bootstrap
 gem 'volt-bootstrap'
