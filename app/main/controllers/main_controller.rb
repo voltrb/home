@@ -1,10 +1,21 @@
 class MainController < ModelController
   model :page
 
+  def index
+    page._items = nil
+    page._items << {_name: 'Take out trash'}
+    page._items << {_name: 'Make bed'}
+    page._items << {_name: 'Do dishes'}
+  end
+
   def dom_ready
+    puts 'dom ready'
     %x{
-      console.log('dom ready')
       prettyPrint();
+      
+      $('.col-md-9').find('h1, h2, h3').attr('id', function(){
+        return $(this).text().toLowerCase().replace(/[\*\^\'\!]/g, '').split(' ').join('-');
+      });
 
       $('.navbar-collapse a').click(function(){
         $('.navbar-collapse').toggleClass('in').toggleClass('collapse')
@@ -24,27 +35,35 @@ class MainController < ModelController
       });
 
       $('table').addClass('table table-bordered table-condensed table-responsive');
+      
+      
     }
-
-    params._controller.on('changed') do
-      if true
-        %x{
-          prettyPrint();
-          $('.affix').affix({
-            offset: {
-              top: 240
-            }
-          });
-
-          $('body').scrollspy('refresh')
-        }
-      end
-    end
+    
+    # change = params._controller.on('changed') do
+    #   if true
+    #     %x{
+    #       console.log('changed')
+    #       prettyPrint();
+    #       
+    #       $('.navbar-collapse a').click(function(){
+    #         $('.navbar-collapse').toggleClass('in').toggleClass('collapse')
+    #       });
+    #       
+    #       $('.affix').affix({
+    #         offset: {
+    #           top: 240
+    #         }
+    #       });
+    # 
+    #       $('body').scrollspy('refresh')
+    #     }
+    #   end
+    # end
 
   end
 
   def dom_remove
-    affix.remove();
+    change.remove();
   end
 
   def add_contact
