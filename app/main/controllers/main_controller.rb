@@ -1,7 +1,7 @@
-class IndexController < ModelController
+class MainController < ModelController
   model :page
 
-  def initialize
+  def index
     page._items = nil
     page._items << {_name: 'Take out trash'}
     page._items << {_name: 'Make bed'}
@@ -92,5 +92,15 @@ class IndexController < ModelController
   def escape(string)
     string.gsub('<', '&lt;').gsub('>', '&gt;')
   end
+
+  private
+    # the main template contains a #template binding that shows another
+    # template.  This is the path to that template.  It may change based
+    # on the params._controller and params._action values.
+    def main_path
+      path = params._controller.or('main') + "/" + params._action.or('index')
+      puts "MAIN PATH: #{path.inspect}"
+      path
+    end
 
 end

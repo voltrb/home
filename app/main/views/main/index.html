@@ -54,25 +54,6 @@
     <br /><br />
     
     <div class='row'>
-      <div class='col-md-6 col-md-offset-3'>
-        <div class='well'>
-          {_items[0].inspect}
-          {#each _items as item}
-            <label class='{#if item._complete}complete{/}'>
-              <input type='checkbox' checked='{item._complete}' />
-              {item._name}
-            </label>
-          {/}
-        </div>
-        <br />
-        <br />
-
-      </div>
-    </div>
-  
-    <br /><br />
-    
-    <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
         <div class='well'>
           <div class='row'>
@@ -106,28 +87,12 @@
     <div class='row'>
       <div class='col-md-4 col-md-offset-1'>
         <div class='well'>
-          <h4>New Contact</h4>
-          <form e-submit='add_contact'>
-            <table>
-              <tr>
-                <td>
-                  <input type='text' value='{page._new_contact._name}' class='form-control'>
-                </td>
-                <td>
-                  <button class='btn btn-sm btn-default'>Create Contact</button>
-                </td>
-              </tr>
-            </table>            
-          </form>
-          <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
-          <table class='table'>
-            {#each _contacts as contact}
-              <tr>
-                <td>{contact._name}</td>
-                <td><button e-click='remove_contact(index)'>X</button></td>
-              </tr>
-            {/}
-          </table>
+          {#each _items as item}
+            <label class='checkbox {#if item._complete}complete{/}'>
+              <input type='checkbox' checked='{item._complete}' />
+              {item._name}
+            </label>
+          {/}
         </div>
       </div>
       <div class='col-md-6'>
@@ -135,12 +100,9 @@
           <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
             <a>views/home.html</a>
           </li>
-          <li class='{_tabs._h2}' e-click='select(event)'>
-            <a>index_controller.rb</a>
-          </li>
         </ul>
         <pre class='pre-with-tabs'>
-<code class='active prettyprint'>{escape("<form e-submit='add_contact'>\r  <input type='text' value='page._new_contact._name' />\r</form>\r\r{#each _contacts as contact}\r  {contact._name}\r  <button e-click='remove_contact(index)'>X</button>\r{/}")}</code><code class='prettyprint'>{escape("def add_contact\r  self._contacts << page._new_contact.cur\r  page._new_contact = {}\rend\r\rdef remove_contact(index)\r  self._contacts.delete_at(index)\rend")}</code></pre>
+<code class='active prettyprint'>{escape("{#each _items as item}\r  <label class='checkbox {#if item._complete}complete{/}'>\r    <input type='checkbox' checked='{item._complete}' />\r    {item._name}\r  </label>\r{/}")}</code></pre>
       </div>
     </div>
     

@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/opal/opal.git
-  revision: 8b5a84f7427b3ffd0ddf02a9e9c5eb6ee465fd53
+  revision: 8ae7056a68df5ee5c3c1d6ec4ddd45c8aaa09567
   specs:
     opal (0.6.0)
       source_map
@@ -99,7 +99,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    volt (0.7.4)
+    volt (0.7.8)
       listen (~> 2.4.0)
       mongo (~> 1.9.0)
       pry (~> 0.9.12.0)
