@@ -6,13 +6,19 @@ class MainController < ModelController
     page._items << {_name: 'Take out trash'}
     page._items << {_name: 'Make bed'}
     page._items << {_name: 'Do dishes'}
+
+    store._items.find({}).then do |result|
+      if result.size == 0
+        store._items << {_text: 'New'}
+      end
+    end
   end
 
   def dom_ready
     puts 'dom ready'
     %x{
       prettyPrint();
-      
+
       $('.col-md-9').find('h1, h2, h3').attr('id', function(){
         return $(this).text().toLowerCase().replace(/[\*\^\'\!]/g, '').split(' ').join('-');
       });
@@ -35,26 +41,26 @@ class MainController < ModelController
       });
 
       $('table').addClass('table table-bordered table-condensed table-responsive');
-      
-      
+
+
     }
-    
+
     # change = params._controller.on('changed') do
     #   if true
     #     %x{
     #       console.log('changed')
     #       prettyPrint();
-    #       
+    #
     #       $('.navbar-collapse a').click(function(){
     #         $('.navbar-collapse').toggleClass('in').toggleClass('collapse')
     #       });
-    #       
+    #
     #       $('.affix').affix({
     #         offset: {
     #           top: 240
     #         }
     #       });
-    # 
+    #
     #       $('body').scrollspy('refresh')
     #     }
     #   end

@@ -8,10 +8,10 @@
         <div class='row'>
           <div class='col-md-8'>
             <h1>Volt is a framework for building<br /> data rich web applications<br />shockingly fast.</h1>
-            <a href='' class='btn btn-default btn-lg'>Play Video <i class='fa fa-play' /></a> <a href='/getting_started' class='btn btn-default btn-lg'>Get Started <i class='fa fa-code' /></a>
+            <a href='https://www.youtube.com/watch?v=6ZIvs0oKnYs' class='btn btn-default btn-lg'>Play Video <i class='fa fa-play' /></a> <a href='/getting_started' class='btn btn-default btn-lg'>Get Started <i class='fa fa-code' /></a>
           </div>
           <div class='col-md-4 text-center'>
-            <i class='fa fa-youtube-play' />
+            <a href="https://www.youtube.com/watch?v=6ZIvs0oKnYs"><i class='fa fa-youtube-play' /></a>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <br /><br />
-    
+
     <div class='row'>
       <div class='col-md-6'>
         <br /><br /><br /><br />
@@ -50,9 +50,9 @@
         <p>Enter your name to the left to check out the awesome syncage.  We use these "&#123; &#125;" mustache looking things to run ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
       </div>
     </div>
-    
+
     <br /><br />
-    
+
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
         <div class='well'>
@@ -62,28 +62,28 @@
               <span class='help-block'>Keep it clean kids.</span>
             </div>
             <div class='col-md-9'>
-              <textarea value='{_text}' class='form-control' rows='4' placeholder='Enter anything you want...' />
+              <textarea value='{store._items[0]._text}' class='form-control' rows='4' placeholder='Enter anything you want...' />
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
-        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._text' />")}</code>.  You'll notice that all we had to do to save the data was prepend the word store to our reactive value <code class='prettyprint'>{{{{_text}}}}</code>.  Pretty easy right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
+        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._items[0]._text' />")}</code>.  You'll notice that we can sync data on any model in the store collection.  The <code class='prettyprint'>{{{{_text}}}}</code> attribute is automatically synced between any clients.  Pretty easy right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
       </div>
     </div>
-    
-    <br /><br />
-    
+
+    <!-- <br /><br />
+
     <div class='row'>
       <div class='col-md-6 col-md-offset-3'>
         <h2>Let's make a quick app.</h2>
         <p>One of the best parts about Volt is how simple it is to do both reactive syncing, and oldschool crud. This simple app is going to show just how far a little bit of code can go with Volt.  We start by adding a form with an input text field and a button to our view.  In our view below, we have 3 elements.  A form that triggers the add_contact method in the controller, an input field that sets the reactive value for <code class='prettyprint'>page._new_contact._name</code> </p>
       </div>
     </div>
-    
+
     <div class='row'>
       <div class='col-md-4 col-md-offset-1'>
         <div class='well'>
@@ -105,10 +105,10 @@
 <code class='active prettyprint'>{escape("{#each _items as item}\r  <label class='checkbox {#if item._complete}complete{/}'>\r    <input type='checkbox' checked='{item._complete}' />\r    {item._name}\r  </label>\r{/}")}</code></pre>
       </div>
     </div>
-    
+
     <br /><br /><br /><br />
-    
-    
+
+
     <div class='row'>
       <div class='col-md-6'>
         <div class='well'>
@@ -144,7 +144,7 @@
         <p>Let's add a way to select and edit a contact.  We add a wrapper around each contact with <code class='prettyprint'>{escape("e-click='{set_index(index)}'")}</code>.  When clicked, this triggers the controller's set_index method.</p>
       </div>
     </div>
-    
+
     <div class='row'>
       <div class='col-md-6 col-md-offset-3'>
         <ul class='nav nav-tabs pre-tabs'>
@@ -159,9 +159,9 @@
 <code class='active prettyprint lang-html'>{escape("...\r\r{#each _contacts as contact}\r  <div e-click='set_index(index)'>\r    {contact._name}\r    <button e-click='remove_contact(index)'>X</button>\r  </div>\r{/}\n")}{escape("{#if _current_contact}\r  <input type='text' value='{_current_contact._name}' />\r  <textarea value='{_current_contact._address}' />\r{#else}\r  <p>Please select a contact.</p>\r{/}")}</code><code class='prettyprint'>{escape("...\r\rdef set_index(index)\r  params._index = index\r  self._current_contact = _contacts[params._index.to_i]\rend")}</code></pre>
       </div>
     </div>
-    
+
     <br /><br /><br /><br />
-    
+
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
         <div class='well'>
@@ -184,5 +184,5 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
