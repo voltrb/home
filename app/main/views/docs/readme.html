@@ -1,22 +1,28 @@
 <:Body><p><a href="http://badge.fury.io/rb/volt"><img src="https://badge.fury.io/rb/volt.png" alt="Gem Version"></a>
 <a href="https://codeclimate.com/github/voltrb/volt"><img src="https://codeclimate.com/github/voltrb/volt.png" alt="Code Climate"></a>
-<a href="https://travis-ci.org/voltrb/volt"><img src="https://travis-ci.org/voltrb/volt.png?branch=master" alt="Build Status"></a></p>
+<a href="https://travis-ci.org/voltrb/volt"><img src="https://travis-ci.org/voltrb/volt.png?branch=master" alt="Build Status"></a>
+<a href="http://inch-ci.org/github/voltrb/volt"><img src="http://inch-ci.org/github/voltrb/volt.svg?branch=master" alt="Inline docs"></a>
+<a href="https://gitter.im/voltrb/volt"><img src="https://badges.gitter.im/voltrb/volt.png" alt="Volt Chat"></a></p>
 
-<hr>
-
-<blockquote>
-<h2>NOTE: VOLT IS STILL IN DEVELOPMENT, DON&#39;T USE IT FOR ANYTHING SERIOUS YET</h2>
-</blockquote>
+<p>** For the current status of volt, read: http://voltframework.com/blog</p>
 
 <h1>Volt</h1>
 
-<p>Volt is a ruby web framework where your ruby code runs on both the server and the client (via <a href="https://github.com/opal/opal">opal</a>.)  The DOM automatically update as the user interacts with the page.  Page state can be stored in the URL, if the user hits a URL directly, the HTML will first be rendered on the server for faster load times and easier indexing by search engines.</p>
+<p>Volt is a Ruby web framework where your ruby code runs on both the server and the client (via <a href="https://github.com/opal/opal">opal</a>).  The DOM automatically update as the user interacts with the page. Page state can be stored in the URL. If the user hits a URL directly, the HTML will first be rendered on the server for faster load times and easier indexing by search engines.</p>
 
-<p>Instead of syncing data between the client and server via HTTP, volt uses a persistent connection between the client and server.  When data updated on one client, it is updated in the database and any other listening clients.  (With almost no setup code needed)</p>
+<p>Instead of syncing data between the client and server via HTTP, Volt uses a persistent connection between the client and server. When data is updated on one client, it is updated in the database and any other listening clients (with almost no setup code needed).</p>
 
-<p>Pages HTML is written in a handlebars like template language.  Volt uses data flow/reactive programming to automatically and intelligently propagate changes to the DOM (or anything other code wanting to know when a value updates)  When something in the DOM changes, Volt intelligently updates only the nodes that need to be changed.</p>
+<p>Pages HTML is written in a handlebars-like template language.  Volt uses data flow/reactive programming to automatically and intelligently propagate changes to the DOM (or anything other code wanting to know when a value updates).  When something in the DOM changes, Volt intelligently updates only the nodes that need to be changed.</p>
 
-<p>See a quick demo video here: <a href="http://www.youtube.com/watch?v=j0vFIRMzarI">http://www.youtube.com/watch?v=j0vFIRMzarI</a></p>
+<p>See some demo videos here:
+ - <a href="https://www.youtube.com/watch?v=6ZIvs0oKnYs">Volt Todos Example</a>
+ - <a href="https://www.youtube.com/watch?v=c478sMlhx1o">Build a Blog with Volt</a>
+ - <a href="https://www.youtube.com/watch?v=yZIQ-2irY-Q">Reactive Values in Volt</a></p>
+
+<p>Check out demo apps:
+ - https://github.com/voltrb/todos3
+ - https://github.com/voltrb/blog
+ - https://github.com/voltrb/contactsdemo</p>
 
 <h2>Goals</h2>
 
@@ -24,10 +30,10 @@
 
 <ol>
 <li>Developer happiness</li>
-<li>Write once on the client and the server</li>
+<li>Write once on the client and server</li>
 <li>Automatic data syncing between client and server</li>
 <li>Apps are built as nested components.  Components can be shared (via gems)</li>
-<li>Concurrent.  Volt provides tools to simplify concurrency.  Component rendering is done in parallel on the server.</li>
+<li>Concurrent.  Volt provides tools to simplify concurrency.  Component rendering is done in parallel on the server</li>
 <li>Intelligent asset management</li>
 <li>Secure (shouldn&#39;t need to be said, but it does)</li>
 <li>Be fast/light</li>
@@ -40,19 +46,17 @@
 <p>Many of the core Volt features are implemented.  We still have a bit to go before 1.0, most of it involving models.</p>
 
 <ol>
-<li>Database storing models</li>
-<li>Model validations (client and server side)</li>
 <li>Reactive model queries</li>
-<li>Reactive Enumerators with Blocks (.map .count, etc...)</li>
+<li>Reactive Enumerators with Blocks (.map .count, etc…)</li>
 <li>Full managed render loop (for fast rendering)</li>
-<li>Fix N+1 issue with some reactive values (I know how to fix, just haven&#39;t gotten around to doing it)</li>
+<li>Fix N+1 issue with some reactive values (I know how to fix it, just haven&#39;t gotten around to doing it)</li>
 </ol>
 
 <h1>VOLT guide</h1>
 
-<p>This guide will take you through creating a basic web application in Volt.  This tutorial assumes a basic knowledge of ruby and web development.</p>
+<p>This guide will take you through creating a basic web application in Volt.  This tutorial assumes a basic knowledge of Ruby and web development.</p>
 
-<p>To get started, install volt:</p>
+<p>To get started, install Volt:</p>
 
 <pre class='prettyprint lang-ruby'><code>gem install volt
 </code></pre>
@@ -62,14 +66,14 @@
 <pre class='prettyprint lang-ruby'><code>volt new project_name
 </code></pre>
 
-<p>This will setup a basic project.  Now lets run the server.</p>
+<p>This will setup a basic project.  Now let&#39;s run the server:</p>
 
-<pre class='prettyprint lang-ruby'><code>volt server
+<pre class='prettyprint lang-ruby'><code>bundle exec volt server
 </code></pre>
 
-<p>You can access the volt console with:</p>
+<p>You can access the Volt console with:</p>
 
-<pre class='prettyprint lang-ruby'><code>volt console
+<pre class='prettyprint lang-ruby'><code>bundle exec volt console
 </code></pre>
 
 <h1>Guide Sections</h1>
@@ -79,24 +83,18 @@
 <li><a href="#rendering">Rendering</a>
 
 <ol>
-<li><a href="#reactive-values">Reactive Values</a>
-
-<ol>
+<li><a href="#reactive-values">Reactive Values</a></li>
 <li><a href="#reactivevalue-gotchas">ReactiveValue Gotchas</a></li>
-</ol></li>
 </ol></li>
 <li><a href="#views">Views</a>
 
 <ol>
-<li><a href="#bindings">Bindings</a>
-
-<ol>
+<li><a href="#bindings">Bindings</a></li>
 <li><a href="#content-binding">Content Binding</a></li>
 <li><a href="#if-binding">If Binding</a></li>
 <li><a href="#each-binding">Each Binding</a></li>
 <li><a href="#attribute-bindings">Attribute Bindings</a></li>
 <li><a href="#escaping">Escaping</a></li>
-</ol></li>
 </ol></li>
 <li><a href="#models">Models</a>
 
@@ -107,18 +105,16 @@
 <li><a href="#automatic-model-conversion">Automatic Model Conversion</a></li>
 </ol></li>
 <li><a href="#controllers">Controllers</a></li>
+<li><a href="#tasks">Tasks</a></li>
 <li><a href="#components">Components</a>
 
 <ol>
 <li><a href="#dependencies">Dependencies</a></li>
 <li><a href="#assets">Assets</a></li>
 <li><a href="#component-generator">Component Generator</a></li>
-<li><a href="#provided-components">Provided Components</a>
-
-<ol>
+<li><a href="#provided-components">Provided Components</a></li>
 <li><a href="#notices">Notices</a></li>
 <li><a href="#flash">Flash</a></li>
-</ol></li>
 </ol></li>
 <li><a href="#controls">Controls</a></li>
 <li><a href="#routes">Routes</a>
@@ -126,6 +122,7 @@
 <ol>
 <li><a href="#routes-file">Routes file</a></li>
 </ol></li>
+<li><a href="#testing">Testing</a></li>
 </ol>
 
 <h1>Getting Help</h1>
@@ -133,10 +130,10 @@
 <p>Volt is still a work in progress, but early feedback is appreciated.  Use the following to communicate with the developers, someone will get back to you very quickly:</p>
 
 <ul>
-<li><strong>If you need help</strong>: post on <a href="http://www.stackoverflow.com">stackoverflow.com</a>, be sure to tag your question with voltrb</li>
+<li><strong>If you need help</strong>: post on <a href="http://www.stackoverflow.com">stackoverflow.com</a>. Be sure to tag your question with <code>voltrb</code>.</li>
 <li><strong>If you found a bug</strong>: post on <a href="https://github.com/voltrb/volt/issues">github issues</a></li>
 <li><strong>If you have an idea or need a feature</strong>: post on <a href="https://github.com/voltrb/volt/issues">github issues</a></li>
-<li><strong>If you want to discuss volt</strong>: use #voltrb on freenode.</li>
+<li><strong>If you want to discuss Volt</strong>: use #voltrb on freenode.</li>
 </ul>
 
 <h1>Rendering</h1>
@@ -152,190 +149,210 @@
 
 <p>The idea of &quot;reactive programming&quot; has been used to simplify maintaining the DOM.  The idea is instead of having event handlers that manage a model (or JavaScript object) and manage the DOM, we have event handlers that manage reactive data models.  We describe our DOM layer in a declarative way so that it automatically knows how to render our data models.</p>
 
-<h2>Reactive Value&#39;s</h2>
+<h2>Reactive Values</h2>
 
 <p>To build bindings, Volt provides the ReactiveValue class.  This wraps any object in a reactive interface.  To create a ReactiveValue, simply pass the object you want to wrap as the first argument to new.</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(&quot;my object&quot;)
+<p><code>ruby
+    a = ReactiveValue.new(&quot;my object&quot;)
     # =&gt; @&quot;my object&quot;
-</code></pre>
+</code></p>
 
-<p>When .inspect is called on a ReactiveValue (like in the console), an @ is placed in front of the value&#39;s inspect string, so you know its reactive.</p>
+<p>When <code>#inspect</code> is called on a ReactiveValue (like in the console), an &#39;@&#39; is placed in front of the value&#39;s inspect string, so you know it&#39;s reactive.</p>
 
-<p>When you call a method on a ReactiveValue, you get back a new reactive value that depends on the previous one.  It remembers how it was created and you can call .cur on it any time to get its current value, which will be computed based off of the first reactive value.  (Keep in mind below that + is a method call, the same as a.+(b) in ruby.)</p>
+<p>When you call a method on a ReactiveValue, you get back a new reactive value that depends on the previous one.  It remembers how it was created and you can call <code>#cur</code> on it any time to get its current value, which will be computed based off of the first reactive value.  (Keep in mind below that + is a method call, the same as <code>a.+(b)</code> in ruby.)</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(1)
+<p>```ruby
+    a = ReactiveValue.new(1)
     a.reactive?
-    # =&gt; true
+    # =&gt; true</p>
 
-    a.cur
-    # =&gt; 1
+<pre class='prettyprint lang-ruby'><code>a.cur
+# =&gt; 1
 
-    b = a + 5
-    b.reactive?
-    # =&gt; true
+b = a + 5
+b.reactive?
+# =&gt; true
 
-    b.cur
-    # =&gt; 6
+b.cur
+# =&gt; 6
 
-    a.cur = 2
-    b.cur
-    # =&gt; 7
+a.cur = 2
+b.cur
+# =&gt; 7
 </code></pre>
 
-<p>This provides the backbone for reactive programming.  We setup computation/flow graphs instead of doing an actual calculation.  Calling .cur (or .inspect, .to_s, etc..) runs the computation and returns the current value at that time, based on all of its dependencies.</p>
+<p>```</p>
 
-<p>ReactiveValue&#39;s also let you setup listeners and trigger events:</p>
+<p>This provides the backbone for reactive programming.  We setup computation/flow graphs instead of doing an actual calculation.  Calling <code>#cur</code> (or <code>#inspect</code>, <code>#to_s</code>, etc..) runs the computation and returns the current value at that time, based on all of its dependencies.</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(0)
+<p>ReactiveValues also let you setup listeners and trigger events:</p>
+
+<p><code>ruby
+    a = ReactiveValue.new(0)
     a.on(&#39;changed&#39;) {"&#123;"} puts &quot;A changed&quot; {38.chr + "#125;"}
     a.trigger!(&#39;changed&#39;)
     # =&gt; A Changed
-</code></pre>
+</code></p>
 
-<p>These events propagate to any reactive value&#39;s created off of a reactive value.</p>
+<p>These events propagate to any reactive values created off of a reactive value:</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(1)
+<p>```ruby
+    a = ReactiveValue.new(1)
     b = a + 5
-    b.on(&#39;changed&#39;) {"&#123;"} puts &quot;B changed&quot; {38.chr + "#125;"}
+    b.on(&#39;changed&#39;) {"&#123;"} puts &quot;B changed&quot; {38.chr + "#125;"}</p>
 
-    a.trigger!(&#39;changed&#39;)
-    # =&gt; B changed
+<pre class='prettyprint lang-ruby'><code>a.trigger!(&#39;changed&#39;)
+# =&gt; B changed
 </code></pre>
+
+<p>```</p>
 
 <p>This event flow lets us know when an object has changed, so we can update everything that depended on that object.</p>
 
-<p>Lastly, we can also pass in other reactive value&#39;s as arguments to methods on a reactive value.  The dependencies will be tracked for both and events will propagate down from both.  (Also, note that doing <code>.cur =</code> to update the current value triggers a &quot;changed&quot; event.)</p>
+<p>Lastly, we can also pass in other reactive values as arguments to methods on a reactive value.  The dependencies will be tracked for both and events will propagate down from both.  (Also, note that calling <code>#cur=</code> to update the current value triggers a &quot;changed&quot; event.)</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(1)
+<p>```ruby
+    a = ReactiveValue.new(1)
     b = ReactiveValue.new(2)
-    c = a + b
+    c = a + b</p>
 
-    a.on(&#39;changed&#39;) {"&#123;"} puts &quot;A changed&quot; {38.chr + "#125;"}
-    b.on(&#39;changed&#39;) {"&#123;"} puts &quot;B changed&quot; {38.chr + "#125;"}
-    c.on(&#39;changed&#39;) {"&#123;"} puts &quot;C changed&quot; {38.chr + "#125;"}
+<pre class='prettyprint lang-ruby'><code>a.on(&#39;changed&#39;) {"&#123;"} puts &quot;A changed&quot; {38.chr + "#125;"}
+b.on(&#39;changed&#39;) {"&#123;"} puts &quot;B changed&quot; {38.chr + "#125;"}
+c.on(&#39;changed&#39;) {"&#123;"} puts &quot;C changed&quot; {38.chr + "#125;"}
 
-    a.cur = 3
-    # =&gt; A changed
-    # =&gt; C changed
+a.cur = 3
+# =&gt; A changed
+# =&gt; C changed
 
-    b.cur = 5
-    # =&gt; B changed
-    # =&gt; C changed
+b.cur = 5
+# =&gt; B changed
+# =&gt; C changed
 </code></pre>
 
-<h3>ReactiveValue Gotcha&#39;s</h3>
+<p>```</p>
 
-<p>There are a few simple things to keep in mind with ReactiveValue&#39;s.  In order to make them mostly compatible with other ruby objects, a two methods do not return another ReactiveValue.</p>
+<h3>ReactiveValue Gotchas</h3>
+
+<p>There are a few simple things to keep in mind with ReactiveValues.  In order to make them mostly compatible with other Ruby objects, two methods do not return another ReactiveValue.</p>
 
 <pre class='prettyprint lang-ruby'><code>to_s and inspect
 </code></pre>
 
-<p>If you want these to be used reactively, see the section on <a href="#with">with</a></p>
+<p>If you want these to be used reactively, see the section on <a href="#with">with</a>.</p>
 
-<p>Also, due to a small limitation in ruby, ReactiveValue&#39;s always are truthy.  See the <a href="#truthy-checks-true-false-or-and-and">truthy checks</a> section on how to check for truth.</p>
+<p>Also, due to a small limitation in ruby, ReactiveValues always are truthy.  See the <a href="#truthy-checks-true-false-or-and-and">truthy checks</a> section on how to check for truth.</p>
 
-<p>When passing something that may contain reactive values to a JS function, you can call <code>.deep_cur</code> on any object to get back a copy that will have all reactive value&#39;s turned into their current value.</p>
+<p>When passing something that may contain reactive values to a JS function, you can call <code>#deep_cur</code> on any object to get back a copy that will have all reactive values turned into their current value.</p>
 
 <h3>Current Status</h3>
 
-<p>NOTE: currently ReactiveValue&#39;s are not complete.  At the moment, they do not handle methods that are passed blocks (or procs, lambda&#39;s).  This is planned, but not complete.  At the moment you can use <a href="#with">with</a> to accomplish similar things.</p>
+<p>NOTE: currently ReactiveValues are not complete.  At the moment, they do not handle methods that are passed blocks (or procs, lambdas).  This is planned, but not complete.  At the moment you can use <a href="#with">with</a> to accomplish similar things.</p>
 
 <h3>Truthy Checks: .true?, .false?, .or, and .and</h3>
 
 <p>Because a method on a reactive value always returns another reactive value, and because only nil and false are false in ruby, we need a way to check if a ReactiveValue is truthy in our code.  The easiest way to do this is by calling .true? on it.  It will return a non-wrapped boolean.  .nil? and .false? do as you would expect.</p>
 
-<p>One common place we use a truthy check is in setting up default values with || (logical or)  Volt provides a convience method that does the same thing .or, but works with ReactiveValue&#39;s.</p>
+<p>One common place we use a truthy check is in setting up default values with || (logical or)  Volt provides a convenient method that does the same thing <code>#or</code>, but works with ReactiveValues.</p>
 
 <p>Instead of</p>
 
-<pre class='prettyprint lang-ruby'><code>    a || b
-</code></pre>
+<p><code>ruby
+    a || b
+</code></p>
 
 <p>Simply use:</p>
 
-<pre class='prettyprint lang-ruby'><code>    a.or(b)
-</code></pre>
+<p><code>ruby
+    a.or(b)
+</code></p>
 
-<p>.and works the same way as &amp;&amp;.  #and and #or let you maintain the reactivity all of the way through.</p>
+<p><code>#and</code> works the same way as &amp;&amp;.  #and and #or let you maintain the reactivity all of the way through.</p>
 
 <h3>With</h3>
 
-<p>Normally when you want to have a value that depends on another value, but transforms it somehow, you simply call your transform method on the ReactiveValue.  However sometimes the transform is not directly on the ReactiveValue&#39;s object.</p>
+<p>Normally when you want to have a value that depends on another value, but transforms it somehow, you simply call your transform method on the ReactiveValue.  However sometimes the transform is not directly on the ReactiveValues object.</p>
 
-<p>You can call .with on any ReactiveValue.  .with will return a new ReactiveValue that depends on the current ReactiveValue.  .with takes a block, the first argument to the block will be the cur value of the ReactiveValue you called with on.  Any additional arguments to with will be passed in after the first one.  If you pass another ReactiveValue as an argument to .with, the returned ReactiveValue will depend on the argument ReactiveValue as well, and the block will receive the arguments cur value.</p>
+<p>You can call <code>#with</code> on any ReactiveValue.  <code>#with</code> will return a new ReactiveValue that depends on the current ReactiveValue.  <code>#with</code> takes a block, the first argument to the block will be the cur value of the ReactiveValue you called <code>#with</code> on.  Any additional arguments to <code>#with</code> will be passed in after the first one.  If you pass another ReactiveValue as an argument to <code>#with</code>, the returned ReactiveValue will depend on the argument ReactiveValue as well, and the block will receive the arguments cur value.</p>
 
-<pre class='prettyprint lang-ruby'><code>    a = ReactiveValue.new(5)
+<p><code>ruby
+    a = ReactiveValue.new(5)
     b = a.with {"&#123;"}|v| v + 10 {38.chr + "#125;"}
     b.cur
     # =&gt; 15
-</code></pre>
+</code></p>
 
 <h1>Views</h1>
 
-<p>Views in Volt are use a templating language similar to handlebars.  They can be broken up into sections, a section header looks like the following:</p>
+<p>Views in Volt use a templating language similar to handlebars. They can be broken up into sections. A section header looks like the following:</p>
 
-<pre class='prettyprint lang-ruby'><code>&lt;:Body&gt;
-</code></pre>
+<p><code>html
+&lt;:Body&gt;
+</code></p>
 
 <p>Section headers should start with a capital letter so as not to be confused with <a href="#controls">controls</a>.  Section headers do not use closing tags.  If section headers are not provided, the Body section is assumed.</p>
 
-<p>Section&#39;s help you split up different parts of the same content (title and body usually), but within the same file.</p>
+<p>Sections help you split up different parts of the same content (title and body usually), but within the same file.</p>
 
 <h2>Bindings</h2>
 
-<p>One you understand the basics of ReactiveValue&#39;s, we can discuss bindings.  In Volt, you code your views in a handlebar&#39;s like template language.  Volt provides several bindings, which handle rendering of something for you.  Content bindings are anything inbetween {"&#123;"} and {38.chr + "#125;"}</p>
+<p>Once you understand the basics of ReactiveValues, we can discuss bindings. In Volt, you code your views in a handlebars like template language.  Volt provides several bindings, which handle rendering of something for you. Content bindings are anything inbetween {"&#123;"} and {38.chr + "#125;"}.</p>
 
 <h3>Content binding</h3>
 
 <p>The most basic binding is a content binding:</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;p&gt;{"&#123;"}some_method{38.chr + "#125;"}&lt;p&gt;
-</code></pre>
+<p><code>html
+    &lt;p&gt;{"&#123;"}some_method{38.chr + "#125;"}&lt;p&gt;
+</code></p>
 
-<p>The content binding runs the ruby code between {"&#123;"} and {38.chr + "#125;"}, then renders the return value.  If the returned value is a ReactiveValue, it will update the value updated whenever a &#39;changed&#39; event is triggered on the reactive value.</p>
+<p>The content binding runs the Ruby code between {"&#123;"} and {38.chr + "#125;"}, then renders the return value.  If the returned value is a ReactiveValue, it will update the value updated whenever a &#39;changed&#39; event is triggered on the reactive value.</p>
 
 <h3>If binding</h3>
 
 <p>An if binding lets you provide basic flow control.</p>
 
-<pre class='prettyprint lang-ruby'><code>    {"&#123;"}#if _some_check?{38.chr + "#125;"}
+<p><code>html
+    {"&#123;"}#if _some_check?{38.chr + "#125;"}
       &lt;p&gt;render this&lt;/p&gt;
     {"&#123;"}/{38.chr + "#125;"}
-</code></pre>
+</code></p>
 
 <p>Blocks are closed with a {"&#123;"}/{38.chr + "#125;"}</p>
 
-<p>When the #if binding is rendered, it will run the ruby code after #if.  If the code is true it will render the code below.  Again, if the returned value is reactive, it will update as that value changes.</p>
+<p>When the if binding is rendered, it will run the ruby code after #if.  If the code is true it will render the code below.  Again, if the returned value is reactive, it will update as that value changes.</p>
 
 <p>If bindings can also have #elsif and #else blocks.</p>
 
-<pre class='prettyprint lang-ruby'><code>    {"&#123;"}#if _condition_1?{38.chr + "#125;"}
+<p><code>html
+    {"&#123;"}#if _condition_1?{38.chr + "#125;"}
       &lt;p&gt;condition 1 true&lt;/p&gt;
     {"&#123;"}#elsif _condition_2?{38.chr + "#125;"}
       &lt;p&gt;condition 2 true&lt;/p&gt;
     {"&#123;"}#else{38.chr + "#125;"}
       &lt;p&gt;neither true&lt;/p&gt;
     {"&#123;"}/{38.chr + "#125;"}
-</code></pre>
+</code></p>
 
 <h3>Each binding</h3>
 
 <p>For iteration over objects, the each binding is provided.</p>
 
-<pre class='prettyprint lang-ruby'><code>    {"&#123;"}#each _items as item{38.chr + "#125;"}
+<p><code>html
+    {"&#123;"}#each _items as item{38.chr + "#125;"}
       &lt;p&gt;{"&#123;"}item{38.chr + "#125;"}&lt;/p&gt;
     {"&#123;"}/{38.chr + "#125;"}
-</code></pre>
+</code></p>
 
-<p>Above, if _items was an array, the block would be rendered for each item, setting &#39;item&#39; to the value of the array element.</p>
+<p>Above, if _items were an array, the block would be rendered for each item, setting &#39;item&#39; to the value of the array element.</p>
 
 <p>You can also access the position of the item in the array with the #index method.</p>
 
-<pre class='prettyprint lang-ruby'><code>    {"&#123;"}#each _items as item{38.chr + "#125;"}
+<p><code>html
+    {"&#123;"}#each _items as item{38.chr + "#125;"}
       &lt;p&gt;{"&#123;"}index{38.chr + "#125;"}. {"&#123;"}item{38.chr + "#125;"}&lt;/p&gt;
     {"&#123;"}/{38.chr + "#125;"}
-</code></pre>
+</code></p>
 
 <p>For the array: [&#39;one&#39;, &#39;two&#39;, &#39;three&#39;] this would print:</p>
 
@@ -346,26 +363,29 @@
 
 <p>You can do {"&#123;"}index + 1{38.chr + "#125;"} to correct the zero offset.</p>
 
-<p>When items are removed or added to the array, the #each binding automatically and intelligently add or removes the items from/to the DOM.</p>
+<p>When items are removed or added to the array, the #each binding automatically and intelligently adds or removes the items from/to the DOM.</p>
 
 <h2>Attribute Bindings</h2>
 
 <p>Bindings can also be placed inside of attributes.</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;p class=&quot;{"&#123;"}#if _is_cool?{38.chr + "#125;"}cool{"&#123;"}/{38.chr + "#125;"}&quot;&gt;Text&lt;/p&gt;
-</code></pre>
+<p><code>html
+    &lt;p class=&quot;{"&#123;"}#if _is_cool?{38.chr + "#125;"}cool{"&#123;"}/{38.chr + "#125;"}&quot;&gt;Text&lt;/p&gt;
+</code></p>
 
-<p>There are some special features provided to make for elements work as &quot;two way bindings&quot;</p>
+<p>There are some special features provided to make elements work as &quot;two way bindings&quot;:</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;input type=&quot;text&quot; value=&quot;{"&#123;"}_name{38.chr + "#125;"}&quot; /&gt;
-</code></pre>
+<p><code>html
+    &lt;input type=&quot;text&quot; value=&quot;{"&#123;"}_name{38.chr + "#125;"}&quot; /&gt;
+</code></p>
 
-<p>In the example above, if _name changes, the field will update and if the field is updated, _name will be changed.</p>
+<p>In the example above, if _name changes, the field will update, and if the field is updated, _name will be changed:</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;input type=&quot;checkbox&quot; checked=&quot;{"&#123;"}_checked{38.chr + "#125;"}&quot; /&gt;
-</code></pre>
+<p><code>html
+    &lt;input type=&quot;checkbox&quot; checked=&quot;{"&#123;"}_checked{38.chr + "#125;"}&quot; /&gt;
+</code></p>
 
-<p>If the value of a checked attribute is true, the checkbox will be shown checked.  If it is checked/unchecked, the value will be updated to true or false.</p>
+<p>If the value of a checked attribute is true, the checkbox will be shown checked. If it&#39;s checked or unchecked, the value will be updated to true or false.</p>
 
 <p>-- TODO: select boxes</p>
 
@@ -373,108 +393,96 @@
 
 <h2>Escaping</h2>
 
-<p>When you need to use {"&#123;"} and {38.chr + "#125;"} outside of bindings.  Anything in a triple mustache will be escaped and not processed as a binding:</p>
+<p>When you need to use {"&#123;"} and {38.chr + "#125;"} outside of bindings, anything in a triple mustache will be escaped and not processed as a binding:</p>
 
-<pre class='prettyprint lang-ruby'><code>    {"&#123;"}{"&#123;"}{"&#123;"} bindings look like: {"&#123;"}this{38.chr + "#125;"}  {38.chr + "#125;"}{38.chr + "#125;"}{38.chr + "#125;"}
-</code></pre>
+<p><code>html
+    {"&#123;"}{"&#123;"}{"&#123;"} bindings look like: {"&#123;"}this{38.chr + "#125;"}  {38.chr + "#125;"}{38.chr + "#125;"}{38.chr + "#125;"}
+</code></p>
 
 <h1>Models</h1>
 
 <p>Volt&#39;s concept of a model is slightly different from many frameworks where a model is the name for the ORM to the database.  In Volt a model is a class where you can store data easily.  Models can be created with a &quot;Persistor&quot;, which is responsible for storing the data in the model.  Models created without a persistor, simply store the data in the classes instance.  Lets first see how to use a model.</p>
 
-<p>Volt comes with many built-in models, one is called &#39;page&#39;.  If you call #page on a controller, you will get access to the model.  Models provided by Volt are automatically wrapped in a ReactiveValue so update events can be tracked.</p>
+<p>Volt comes with many built-in models; one is called <code>page</code>.  If you call <code>#page</code> on a controller, you will get access to the model.  Models provided by Volt are automatically wrapped in a ReactiveValue so update events can be tracked.</p>
 
-<pre class='prettyprint lang-ruby'><code>    page._name = &#39;Ryan&#39;
+<p><code>ruby
+    page._name = &#39;Ryan&#39;
     page._name
     # =&gt; @&#39;Ryan&#39;
-</code></pre>
+</code></p>
 
-<p>Models act like a hash that you can access with getters and setters that start with an _   If an underscore method is called that hasn&#39;t yet been assigned, you will get back a &quot;nil model&quot;.  Prefixing with an underscore makes sure we don&#39;t accidentally try to call a method that doesn&#39;t exist and get back nil model instead of raising an exception.  There is no need to define which fields a model has, they act similar to a hash, but with a different access and assign syntax.</p>
+<p>Models act like a hash that you can access with getters and setters that start with an _ .  If an underscore method is called that hasn&#39;t yet been assigned, you will get back a &quot;nil model&quot;.  Prefixing with an underscore makes sure we don&#39;t accidentally try to call a method that doesn&#39;t exist and get back nil model instead of raising an exception.  There is no need to define which fields a model has. Fields behave similarly to a hash, but with a different access and assignment syntax.</p>
 
 <p>Models also let you nest data without creating the intermediate models:</p>
 
-<pre class='prettyprint lang-ruby'><code>    page._settings._color = &#39;blue&#39;
-    page._settings._color
-    # =&gt; @&#39;blue&#39;
+<p>```ruby
+    page.<em>settings.</em>color = &#39;blue&#39;
+    page.<em>settings.</em>color
+    # =&gt; @&#39;blue&#39;</p>
 
-    page._settings
-    # =&gt; @#&lt;Model:_settings {"&#123;"}:_color=&gt;&quot;blue&quot;{38.chr + "#125;"}&gt;
+<pre class='prettyprint lang-ruby'><code>page._settings
+# =&gt; @#&lt;Model:_settings {"&#123;"}:_color=&gt;&quot;blue&quot;{38.chr + "#125;"}&gt;
 </code></pre>
+
+<p>```</p>
 
 <p>Nested data is automatically setup when assigned.  In this case, page._settings is a model that is part of the page model.</p>
 
-<p>You can also append to a model if its not defined yet.  In Volt models, plural properties are assumed to contain arrays (or more specifically ArrayModels)</p>
+<p>You can also append to a model if it&#39;s not defined yet.  In Volt models, plural properties are assumed to contain arrays (or more specifically, ArrayModels).</p>
 
-<pre class='prettyprint lang-ruby'><code>    page._items &lt;&lt; &#39;item 1&#39;
-    page._items
-    # =&gt; @#&lt;ArrayModel [&quot;item 1&quot;, &quot;item 2&quot;]&gt;
+<p>```ruby
+    page.<em>items &lt;&lt; &#39;item 1&#39;
+    page.</em>items
+    # =&gt; @#<ArrayModel ["item 1", "item 2"]></p>
 
-    page._items[0]
-    # =&gt; @&quot;item 1&quot;
+<pre class='prettyprint lang-ruby'><code>page._items[0]
+# =&gt; @&quot;item 1&quot;
 </code></pre>
+
+<p>```</p>
 
 <p>ArrayModels can be appended to and accessed just like regular arrays.</p>
 
 <h2>Provided Collections</h2>
 
-<p>Above I mentioned that Volt comes with many default collection models accessible from a controller.  Each stores in a different location.</p>
+<p>Above, I mentioned that Volt comes with many default collection models accessible from a controller.  Each stores in a different location.</p>
 
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Storage Location</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>page provides a temporary store that only lasts for the life of the page.</td>
-</tr>
-<tr>
-<td>store</td>
-<td>store syncs the data to the backend database and provides query methods.</td>
-</tr>
-<tr>
-<td>session</td>
-<td>values will be stored in a session cookie.</td>
-</tr>
-<tr>
-<td>params</td>
-<td>values will be stored in the params and URL.  Routes can be setup to change how params are shown in the URL.  (See routes for more info)</td>
-</tr>
-<tr>
-<td>flash</td>
-<td>any strings assigned will be shown at the top of the page and cleared as the user navigates between pages.</td>
-</tr>
-<tr>
-<td>controller</td>
-<td>a model for the current controller</td>
-</tr>
-</tbody></table>
+<p>| Name      | Storage Location                                                          |
+|-----------|---------------------------------------------------------------------------|
+| page      | page provides a temporary store that only lasts for the life of the page. |
+| store     | store syncs the data to the backend database and provides query methods.  |
+| session   | values will be stored in a session cookie.                                |
+| params    | values will be stored in the params and URL.  Routes can be setup to change how params are shown in the URL.  (See routes for more info) |
+| flash     | any strings assigned will be shown at the top of the page and cleared as the user navigates between pages. |
+| controller| a model for the current controller                                        |</p>
 
 <p><strong>more storage locations are planned</strong></p>
 
 <h2>Reactive Models</h2>
 
-<p>Because all models provided by Volt are wrapped in a ReactiveValue, you can register listeners on them and be updated when values change.  You can also call methods on their values and get updates when the source&#39;s change.  Bindings also setup listeners.  Models should be the main place you store all data in Volt.  While you can use ReactiveValue&#39;s manually, most of the time you will want to just use something like the controller model.</p>
+<p>Because all models provided by Volt are wrapped in a ReactiveValue, you can register listeners on them and be updated when values change.  You can also call methods on their values and get updates when the sources change.  Bindings also setup listeners.  Models should be the main place you store all data in Volt.  While you can use ReactiveValues manually, most of the time you will want to just use something like the controller model.</p>
 
 <h2>Model Events</h2>
 
-<p>Models trigger events when their data is updated.  Currently models emit three events: changed, added, and removed.  For example:</p>
+<p>Models trigger events when their data is updated.  Currently, models emit three events: changed, added, and removed.  For example:</p>
 
-<pre class='prettyprint lang-ruby'><code>    model = Model.new
+<p>```ruby
+    model = Model.new</p>
 
-    model._name.on(&#39;changed&#39;) {"&#123;"} puts &#39;name changed&#39; {38.chr + "#125;"}
-    model._name = &#39;Ryan&#39;
-    # =&gt; name changed
+<pre class='prettyprint lang-ruby'><code>model._name.on(&#39;changed&#39;) {"&#123;"} puts &#39;name changed&#39; {38.chr + "#125;"}
+model._name = &#39;Ryan&#39;
+# =&gt; name changed
 
-    model._items.on(&#39;added&#39;) {"&#123;"} puts &#39;item added&#39; {38.chr + "#125;"}
-    model._items &lt;&lt; 1
-    # =&gt; item added
+model._items.on(&#39;added&#39;) {"&#123;"} puts &#39;item added&#39; {38.chr + "#125;"}
+model._items &lt;&lt; 1
+# =&gt; item added
 
-    model._items.on(&#39;removed&#39;) {"&#123;"} puts &#39;item removed&#39; {38.chr + "#125;"}
-    model._items.delete_at(0)
-    # =&gt; item removed
+model._items.on(&#39;removed&#39;) {"&#123;"} puts &#39;item removed&#39; {38.chr + "#125;"}
+model._items.delete_at(0)
+# =&gt; item removed
 </code></pre>
+
+<p>```</p>
 
 <h2>Automatic Model Conversion</h2>
 
@@ -482,54 +490,63 @@
 
 <p>For convenience, when placing a hash inside of another model, it is automatically converted into a model.  Models are similar to hashes, but provide support for things like persistence and triggering reactive events.</p>
 
-<pre class='prettyprint lang-ruby'><code>    user = Model.new
-    user._name = &#39;Ryan&#39;
-    user._profiles = {"&#123;"}
-      twitter: &#39;http://www.twitter.com/ryanstout&#39;,
-      dribbble: &#39;http://dribbble.com/ryanstout&#39;
-    {38.chr + "#125;"}
+<p>```ruby
+    user = Model.new
+    user.<em>name = &#39;Ryan&#39;
+    user.</em>profiles = {"&#123;"}
+      _twitter: &#39;http://www.twitter.com/ryanstout&#39;,
+      _dribbble: &#39;http://dribbble.com/ryanstout&#39;
+    {38.chr + "#125;"}</p>
 
-    user._name
-    # =&gt; &quot;Ryan&quot;
-    user._profiles._twitter
-    # =&gt; &quot;http://www.twitter.com/ryanstout&quot;
-    user._profiles.class
-    # =&gt; Model
+<pre class='prettyprint lang-ruby'><code>user._name
+# =&gt; &quot;Ryan&quot;
+user._profiles._twitter
+# =&gt; &quot;http://www.twitter.com/ryanstout&quot;
+user._profiles.class
+# =&gt; Model
 </code></pre>
 
-<p>Models are accessed differently from hashes.  Instead of using model[:symbol] to access, you call a method model.method_name.  This provides a dynamic unified store where setters and getters can be added without changing any access code.</p>
+<p>```</p>
 
-<p>You can get a ruby hash back out by calling .to_h on a Model.</p>
+<p>Models are accessed differently from hashes.  Instead of using <code>model[:symbol]</code> to access, you call a method <code>model.method_name</code>.  This provides a dynamic unified store where setters and getters can be added without changing any access code.</p>
+
+<p>You can get a Ruby hash back out by calling <code>#to_h</code> on a Model.</p>
 
 <h3>Array -&gt; ArrayModel</h3>
 
 <p>Arrays inside of models are automatically converted to an instance of ArrayModel.  ArrayModels behave the same as a normal Array except that they can handle things like being bound to backend data and triggering reactive events.</p>
 
-<pre class='prettyprint lang-ruby'><code>    model = Model.new
-    model._items &lt;&lt; {"&#123;"}_name: &#39;item 1&#39;{38.chr + "#125;"}
+<p>```ruby
+    model = Model.new
+    model.<em>items &lt;&lt; {"&#123;"}</em>name: &#39;item 1&#39;{38.chr + "#125;"}
     model._items.class
-    # =&gt; ArrayModel
+    # =&gt; ArrayModel</p>
 
-    model._items[0].class
-    # =&gt; Model
-    model._items[0]
+<pre class='prettyprint lang-ruby'><code>model._items[0].class
+# =&gt; Model
+model._items[0]
 </code></pre>
 
-<p>To convert a Model or an ArrayModel back to a normal hash, call .to_h or .to_a respectively.  To convert them to a JavaScript Object (for passing to some JavaScript code), call .to_n (to native).</p>
+<p>```</p>
 
-<pre class='prettyprint lang-ruby'><code>    user = Model.new
-    user._name = &#39;Ryan&#39;
-    user._profiles = {"&#123;"}
+<p>To convert a Model or an ArrayModel back to a normal hash, call .to<em>h or .to</em>a respectively.  To convert them to a JavaScript Object (for passing to some JavaScript code), call <code>#to_n</code> (to native).</p>
+
+<p>```ruby
+    user = Model.new
+    user.<em>name = &#39;Ryan&#39;
+    user.</em>profiles = {"&#123;"}
       twitter: &#39;http://www.twitter.com/ryanstout&#39;,
       dribbble: &#39;http://dribbble.com/ryanstout&#39;
-    {38.chr + "#125;"}
+    {38.chr + "#125;"}</p>
 
-    user._profiles.to_h
-    # =&gt; {"&#123;"}twitter: &#39;http://www.twitter.com/ryanstout&#39;, dribbble: &#39;http://dribbble.com/ryanstout&#39;{38.chr + "#125;"}
+<pre class='prettyprint lang-ruby'><code>user._profiles.to_h
+# =&gt; {"&#123;"}twitter: &#39;http://www.twitter.com/ryanstout&#39;, dribbble: &#39;http://dribbble.com/ryanstout&#39;{38.chr + "#125;"}
 
-    items = ArrayModel.new([1,2,3,4])
-    items
+items = ArrayModel.new([1,2,3,4])
+items
 </code></pre>
+
+<p>```</p>
 
 <p>You can get a normal array again by calling .to_a on an ArrayModel.</p>
 
@@ -541,44 +558,101 @@
 <li>A symbol representing the name of a provided collection model:</li>
 </ol>
 
-<pre class='prettyprint lang-ruby'><code>    class TodosController &lt; ModelController
-      model :page
+<p>```ruby
+    class TodosController &lt; ModelController
+      model :page</p>
 
-      # ...
-    end
+<pre class='prettyprint lang-ruby'><code>  # ...
+end
 </code></pre>
 
+<p>```</p>
+
 <ol>
-<li>Calling self.method = in a method:</li>
+<li>Calling <code>self.model=</code> in a method:</li>
 </ol>
 
-<pre class='prettyprint lang-ruby'><code>    class TodosController &lt; ModelController
+<p><code>ruby
+    class TodosController &lt; ModelController
       def initialize
         self.model = :page
       end
     end
-</code></pre>
+</code></p>
 
-<p>In methods, the #model method returns the current model.</p>
+<p>In methods, the <code>#model</code> method returns the current model.</p>
 
 <p>See the <a href="#provided-collections">provided collections</a> section for a list of the available collection models.</p>
 
 <p>You can also provide your own object to model.</p>
 
-<p>In the example above any methods not defined on the TodosController will fall through to the provided model.  All views in views/{"&#123;"}controller_name{38.chr + "#125;"} will have this controller as the target for any ruby run in their bindings.  This means that calls on self (implicit or with self.) will have the model as their target (after calling through the controller).  This lets you add methods to the controller to control how the model is handled, or provide extra methods to the views.</p>
+<p>In the example above, any methods not defined on the TodosController will fall through to the provided model.  All views in views/{"&#123;"}controller_name{38.chr + "#125;"} will have this controller as the target for any Ruby run in their bindings.  This means that calls on self (implicit or with self.) will have the model as their target (after calling through the controller).  This lets you add methods to the controller to control how the model is handled, or provide extra methods to the views.</p>
 
-<p>Volt is more similar to an MVVM architecture than an MVC architecture.  Instead of the controllers passing data off to the views, the controllers are the context for the views.  When using a ModelController, the controller automatically forwards all methods it does not handle to the model.  This is convienant since you can set a model in the controller and then access its properties directly with methods in bindings.  This lets you do something like <code>{"&#123;"}_name{38.chr + "#125;"}</code> instead of something like <code>{"&#123;"}@model._name{38.chr + "#125;"}</code></p>
+<p>Volt is more similar to an MVVM architecture than an MVC architecture.  Instead of the controllers passing data off to the views, the controllers are the context for the views.  When using a ModelController, the controller automatically forwards all methods it does not handle to the model.  This is convenient since you can set a model in the controller and then access its properties directly with methods in bindings.  This lets you do something like <code>{"&#123;"}_name{38.chr + "#125;"}</code> instead of something like <code>{"&#123;"}@model._name{38.chr + "#125;"}</code></p>
 
 <p>Controllers in the app/home component do not need to be namespaced, all other components should namespace controllers like so:</p>
 
-<pre class='prettyprint lang-ruby'><code>    module Auth
+<p><code>ruby
+    module Auth
       class LoginController &lt; ModelController
         # ...
       end
     end
-</code></pre>
+</code></p>
 
 <p>Here &quot;auth&quot; would be the component name.</p>
+
+<h2>Reactive Accessors</h2>
+
+<p>The default ModelController proxies any missing methods to its model.  Since models are wrapped in ReactiveValues, they return ReactiveValues by default.  Sometimes you need to store additional data reactively in the controller outside of the model.  (Though often you may want to condier doing another control/controller).  In this case, you can add a <code>reactive_accessor</code>.  These behave just like <code>attr_accessor</code> except the values assigned and returned are wrapped in a ReactiveValue.  Updates update the existing ReactiveValue.</p>
+
+<p><code>ruby
+  class Contacts &lt; ModelController
+    reactive_accessor :_query
+  end
+</code></p>
+
+<p>Now from the view we can bind to <em>query while also changing in and out the model.  You can also use ```reactive</em>reader<code>and</code>reactive_writer```</p>
+
+<h1>Tasks</h1>
+
+<p>Sometimes you need to explicitly execute some code on the server. Volt solves this problem through <em>tasks</em>. You can define your own tasks by dropping a class into your component&#39;s <code>tasks</code> folder.</p>
+
+<p>```ruby
+    # app/main/tasks/logging_tasks.rb</p>
+
+<pre class='prettyprint lang-ruby'><code>class LoggingTasks
+    def initialize(channel=nil, dispatcher=nil)
+        @channel = channel
+        @dispatcher = dispatcher
+    end
+
+    def log(message)
+        puts message
+    end
+end
+</code></pre>
+
+<p>```</p>
+
+<p>To invoke a task from a controller use <code>tasks.call</code>.</p>
+
+<p><code>ruby
+    class Contacts &lt; ModelController
+        def hello
+            tasks.call(&#39;LoggingTasks&#39;, &#39;log&#39;, &#39;Hello World!&#39;)
+        end
+    end
+</code></p>
+
+<p>You can also pass a block to <code>tasks.call</code> that will receive the return value of your task as soon as it&#39;s done.</p>
+
+<p><code>ruby
+    tasks.call(&#39;MathTasks&#39;, &#39;add&#39;, 23, 5) do |result|
+        # result should be 28
+        alert result
+    end
+</code></p>
 
 <h1>Components</h1>
 
@@ -588,8 +662,9 @@
 
 <p>You can also use controls (see below) from one component in another.  To do this, you must require the component from the component you wish to use them in.  This can be done in the <code>config/dependencies.rb</code> file.  Just put</p>
 
-<pre class='prettyprint lang-ruby'><code>    component &#39;component_name&#39;
-</code></pre>
+<p><code>ruby
+    component &#39;component_name&#39;
+</code></p>
 
 <p>in the file.</p>
 
@@ -597,17 +672,18 @@
 
 <p>Sometimes you may need to include an externally hosted JS file from a component.  To do this, simply do the following in the dependencies.rb file:</p>
 
-<pre class='prettyprint lang-ruby'><code>    javascript_file &#39;http://code.jquery.com/jquery-2.0.3.min.js&#39;
+<p><code>ruby
+    javascript_file &#39;http://code.jquery.com/jquery-2.0.3.min.js&#39;
     css_file &#39;//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css&#39;
-</code></pre>
+</code></p>
 
-<p>Note above though that jquery and bootstrap are currently included by default.  Using javascript_file and css_file will be mixed in with your component assets at the correct locations according to the order they occur in the dependencies.rb files.</p>
+<p>Note above though that jquery and bootstrap are currently included by default.  Using javascript<em>file and css</em>file will be mixed in with your component assets at the correct locations according to the order they occur in the dependencies.rb files.</p>
 
 <h2>Assets</h2>
 
 <p><strong>Note, asset management is still early, and likely will change quite a bit</strong></p>
 
-<p>In volt, assets such as JavaScript and CSS (or sass) are automatically included on the page for you.  Anything placed inside of a components asset/js or assets/css folder is served at /assets/{"&#123;"}js,css{38.chr + "#125;"} (via <a href="https://github.com/sstephenson/sprockets">Sprockets</a>)  Link and script tags are automatically added for each css and js file in assets/css and assets/js respectively.  Files are included in their lexical order, so you can add numbers in front if you need to change the load order.</p>
+<p>In Volt, assets such as JavaScript and CSS (or sass) are automatically included on the page for you.  Anything placed inside of a components asset/js or assets/css folder is served at /assets/{"&#123;"}js,css{38.chr + "#125;"} (via <a href="https://github.com/sstephenson/sprockets">Sprockets</a>).  Link and script tags are automatically added for each css and js file in assets/css and assets/js respectively.  Files are included in their lexical order, so you can add numbers in front if you need to change the load order.</p>
 
 <p>Any JS/CSS from an included component or component gem will be included as well.  By default <a href="http://getbootstrap.com/">bootstrap</a> is provided by the volt-bootstrap gem.</p>
 
@@ -619,8 +695,9 @@
 
 <p>While developing, you can use the component by placing the following in your Gemfile:</p>
 
-<pre class='prettyprint lang-ruby'><code>gem &#39;volt-{"&#123;"}component_name{38.chr + "#125;"}&#39;, path: &#39;/path/to/folder/with/component&#39;
-</code></pre>
+<p><code>ruby
+gem &#39;volt-{"&#123;"}component_name{38.chr + "#125;"}&#39;, path: &#39;/path/to/folder/with/component&#39;
+</code></p>
 
 <p>Once the gem is ready, you can release it to ruby gems with:</p>
 
@@ -631,7 +708,7 @@
 
 <h2>Provided Components</h2>
 
-<p>Volt provides a few components to make web developers lives easier.</p>
+<p>Volt provides a few components to make web developers&#39; lives easier.</p>
 
 <h3>Notices</h3>
 
@@ -649,66 +726,37 @@
 
 <p>Each collection represents a different type of &quot;flash&quot;.  Common examples are <code>_notices, _warnings, and _errors</code>  Using different collections allows you to change how you want the flash displayed.  For example, you might want <code>_notices</code> and <code>_errors</code> to show with different colors.</p>
 
-<pre class='prettyprint lang-ruby'><code>    flash._notices &lt;&lt; &quot;message to flash&quot;
-</code></pre>
+<p><code>ruby
+    flash._notices &lt;&lt; &quot;message to flash&quot;
+</code></p>
 
 <p>These messages will show for 5 seconds, then disappear (both from the screen and the collection).</p>
 
 <h1>Controls</h1>
 
-<p>Everyone wishes that we could predict the scope and required features for each part of our application, but in the real world, things we don&#39;t expect to grow large often do and things we think will be large don&#39;t end up that way.  Controls let you quickly setup reusable code/views.  The location of the control&#39;s code can be moved as it grows without changing the way controls are invoked.</p>
+<p>Everyone wishes that we could predict the scope and required features for each part of our application, but in the real world, things we don&#39;t expect to grow large often do and things we think will be large don&#39;t end up that way.  Controls let you quickly setup reusable code/views.  The location of the controls code can be moved as it grows without changing the way controls are invoked.</p>
 
 <p>To render a control, simply use a tag like so:</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;:control-name /&gt;
-</code></pre>
+<p><code>html
+    &lt;:control-name /&gt;
+</code></p>
 
 <p>or</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;:control-name&gt;&lt;/:control-name&gt;
-</code></pre>
+<p><code>html
+    &lt;:control-name&gt;&lt;/:control-name&gt;
+</code></p>
 
 <p>To find the control&#39;s views and optional controller, Volt will search the following (in order):</p>
 
-<table><thead>
-<tr>
-<th>Component</th>
-<th>View Folder</th>
-<th>View File</th>
-<th>Section</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td>:{"&#123;"}name{38.chr + "#125;"}</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>{"&#123;"}name{38.chr + "#125;"}.html</td>
-<td>:body</td>
-</tr>
-<tr>
-<td></td>
-<td>{"&#123;"}name{38.chr + "#125;"}</td>
-<td>index.html</td>
-<td>:body</td>
-</tr>
-<tr>
-<td>{"&#123;"}name{38.chr + "#125;"}</td>
-<td>index</td>
-<td>index.html</td>
-<td>:body</td>
-</tr>
-<tr>
-<td>gems/{"&#123;"}name{38.chr + "#125;"}</td>
-<td>index</td>
-<td>index.html</td>
-<td>:body</td>
-</tr>
-</tbody></table>
+<p>| Section   | View File    | View Folder    | Component   |
+|-----------|--------------|----------------|-------------|
+| :{"&#123;"}name{38.chr + "#125;"}   |              |                |             |
+| :body     | {"&#123;"}name{38.chr + "#125;"}.html  |                |             |
+| :body     | index.html   | {"&#123;"}name{38.chr + "#125;"}         |             |
+| :body     | index.html   | index          | {"&#123;"}name{38.chr + "#125;"}      |
+| :body     | index.html   | index          | gems/{"&#123;"}name{38.chr + "#125;"} |</p>
 
 <p><strong>Note that anything with a view folder will also load a controller if the name/folder matches.</strong></p>
 
@@ -718,7 +766,7 @@
 <li><p>section
 Views are composed of sections.  Sections start with a <code>&lt;:SectionName&gt;</code> and are not closed.  Volt will look first for a section in the same view.</p></li>
 <li><p>views
-Next Volt will look for a view file that with the control name.  If found, it will render the body section of that view.</p></li>
+Next Volt will look for a view file with the control name.  If found, it will render the body section of that view.</p></li>
 <li><p>view folder
 Failing above, Volt will look for a view folder with the control name, and an index.html file within that folder.  It will render the :body section of that view.  If a controller exists for the view folder, it will make a new instance of that controller and render in that instance.</p></li>
 <li><p>component
@@ -729,64 +777,39 @@ Lastly the app folder of all gems that start with volt are checked.  They are ch
 
 <p>When you create a control, you can also specify multiple parts of the search path in the name.  The parts should be separated by a :  Example:</p>
 
-<pre class='prettyprint lang-ruby'><code>    &lt;:blog:comments /&gt;
-</code></pre>
+<p><code>html
+    &lt;:blog:comments /&gt;
+</code></p>
 
 <p>The above would search the following:</p>
 
-<table><thead>
-<tr>
-<th>Component</th>
-<th>View Folder</th>
-<th>View File</th>
-<th>Section</th>
-</tr>
-</thead><tbody>
-<tr>
-<td></td>
-<td></td>
-<td>blog.html</td>
-<td>:comments</td>
-</tr>
-<tr>
-<td></td>
-<td>blog</td>
-<td>comments.html</td>
-<td>:body</td>
-</tr>
-<tr>
-<td>blog</td>
-<td>comments</td>
-<td>index.html</td>
-<td>:body</td>
-</tr>
-<tr>
-<td>gems/blog</td>
-<td>comments</td>
-<td>index.html</td>
-<td>:body</td>
-</tr>
-</tbody></table>
+<p>| Section   | View File    | View Folder    | Component   |
+|-----------|--------------|----------------|-------------|
+| :comments | blog.html    |                |             |
+| :body     | comments.html| blog           |             |
+| :body     | index.html   | comments       | blog        |
+| :body     | index.html   | comments       | gems/blog   |</p>
 
-<p>Once the view file for the control or template is found, it will look for a matching controller.  If the control is specified as a local template, an empty ModelController will be used.  If a controller is found and loaded, a corrosponding &quot;action&quot; method will be called on it if its exists.  Action methods default to &quot;index&quot; unless the component or template path has two parts, in which case the last part is the action.</p>
+<p>Once the view file for the control or template is found, it will look for a matching controller.  If the control is specified as a local template, an empty ModelController will be used.  If a controller is found and loaded, a corresponding &quot;action&quot; method will be called on it if its exists.  Action methods default to &quot;index&quot; unless the component or template path has two parts, in which case the last part is the action.</p>
 
 <h1>Control Arguments/Attributes</h1>
 
 <p>Like other html tags, controls can be passed attributes.  These are then converted into a hash and passed as the first argument to the initialize method on the controller.  The standard ModelController&#39;s initialize will then assign each key/value in the attributes hash as instance values.  This makes it easy to access attributes passed in.</p>
 
-<pre class='prettyprint lang-ruby'><code>
-&lt;:Body&gt;
+<p>```html</p>
 
-  &lt;ul&gt;
-    {"&#123;"}#each _todos as todo{38.chr + "#125;"}
-      &lt;:todo name=&quot;{"&#123;"}todo._name{38.chr + "#125;"}&quot; /&gt;
+<p>&lt;:Body&gt;</p>
+
+<p><ul>
+    {"&#123;"}#each <em>todos as todo{38.chr + "#125;"}
+      &lt;:todo name=&quot;{"&#123;"}todo.</em>name{38.chr + "#125;"}&quot; /&gt;
     {"&#123;"}/{38.chr + "#125;"}
-  &lt;/ul&gt;
+  </ul></p>
 
-&lt;:Todo&gt;
-  &lt;li&gt;{"&#123;"}@name{38.chr + "#125;"}&lt;/li&gt;
+<p>&lt;:Todo&gt;
+  <li>{"&#123;"}@name{38.chr + "#125;"}</li></p>
 
-</code></pre>
+<p>```</p>
 
 <h1>Routes</h1>
 
@@ -798,64 +821,71 @@ Lastly the app folder of all gems that start with volt are checked.  They are ch
 
 <p>Routes are specified on a per-component basis in the config/routes.rb file.  Routes simply map from URL to params.</p>
 
-<pre class='prettyprint lang-ruby'><code>    get &quot;/todos&quot;, _view: &#39;todos&#39;
-</code></pre>
+<p><code>ruby
+    get &quot;/todos&quot;, {"&#123;"}_view: &#39;todos&#39;{38.chr + "#125;"}
+</code></p>
 
-<p>Routes take two arguments, a path, and a params hash.  When a new URL is loaded and the path is matched on a route, the params will be set to the params provided for that route.</p>
+<p>Routes take two arguments; a path, and a params hash.  When a new URL is loaded and the path is matched on a route, the params will be set to the params provided for that route.  The specified params hash acts as a constraint.  An empty hash will match any url.  Any params that are not matched will be placed in the query parameters.</p>
 
-<p>When the params are changed, the URL will be set to the path for the route that&#39;s params hash matches.</p>
+<p>When the params are changed, the URL will be set to the path for the route whose params hash matches.</p>
 
-<p>Route path&#39;s can also contain variables similar to bindings.</p>
+<p>Route paths can also contain variables similar to bindings:</p>
 
-<pre class='prettyprint lang-ruby'><code>    get &quot;/todos/{"&#123;"}_index{38.chr + "#125;"}&quot;, _view: &#39;todos&#39;
-</code></pre>
+<p><code>ruby
+    get &quot;/todos/{"&#123;"}_index{38.chr + "#125;"}&quot;, _view: &#39;todos&#39;
+</code></p>
 
 <p>In the case above, if any URL matches /todos/*, (where * is anything but a slash), it will be the active route. <code>params._view</code> would be set to &#39;todos&#39;, and <code>params._index</code> would be set to the value in the path.</p>
 
-<p>If <code>params._view</code> is &#39;todos&#39; and <code>params._index</code> is not nil, the route would be matched.</p>
+<p>If <code>params._view</code> were &#39;todos&#39; and <code>params._index</code> were not nil, the route would be matched.</p>
 
 <p>Routes are matched top to bottom in a routes file.</p>
 
 <h2>Debugging</h2>
 
-<p>An in browser irb is in the works.  We also have source maps support, but they are currently disabled due by default.  To enable them run:</p>
+<p>An in browser irb is in the works.  We also have source maps support, but they are currently disabled by default.  To enable them run:</p>
 
 <pre class='prettyprint lang-ruby'><code>MAPS=true volt s
 </code></pre>
 
-<p>They are disabled by default because they slow down page rendering because so many files are rendered.  We&#39;re working with the opal and sprockets teams to make it so everything is still served in one big source maps file (which would show the files as they originated on disk)</p>
+<p>This feature is disabled by default because (due to the volume of pages rendered) it slows down page rendering. We&#39;re working with the opal and sprockets teams to make it so everything is still served in one big source maps file (which would show the files as they originated on disk)</p>
 
 <h2>Channel</h2>
 
-<p>Controllers provide a .channel method, that you can use to get the status of the connection to the backend.  Channel is provided in a ReactiveValue, and when the status changes, the changed events are triggered.  It provides the following:</p>
+<p>Controllers provide a <code>#channel</code> method, that you can use to get the status of the connection to the backend.  Channel is provided in a ReactiveValue, and when the status changes, the changed events are triggered.  It provides the following:</p>
 
-<table><thead>
-<tr>
-<th>method</th>
-<th>description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>connected?</td>
-<td>true if it is connected to the backend</td>
-</tr>
-<tr>
-<td>status</td>
-<td>possible values: :opening, :open, :closed, :reconnecting</td>
-</tr>
-<tr>
-<td>error</td>
-<td>the error message for the last failed connection</td>
-</tr>
-<tr>
-<td>retry_count</td>
-<td>the number of reconnection attempts that have been made without a successful connection</td>
-</tr>
-<tr>
-<td>reconnect_interval</td>
-<td>the time until the next reconnection attempt (in seconds)</td>
-</tr>
-</tbody></table>
+<p>| method      | description                                               |
+|-------------|-----------------------------------------------------------|
+| connected?  | true if it is connected to the backend                    |
+| status      | possible values: :opening, :open, :closed, :reconnecting  |
+| error       | the error message for the last failed connection          |
+| retry<em>count | the number of reconnection attempts that have been made without a successful connection |
+| reconnect</em>interval | the time until the next reconnection attempt (in seconds) |</p>
+
+<h1>Testing</h1>
+
+<p>** Testing is being reworked at the moment.
+Volt provides rspec and capybara out of the box.  You can test directly against your models, controllers, etc... or you can do full integration tests via <a href="https://github.com/jnicklas/capybara">Capybara</a>.</p>
+
+<p>To run Capybara tests, you need to specify a driver.  The following drivers are currently supported:</p>
+
+<ol>
+<li>Phantom (via poltergeist)</li>
+</ol>
+
+<p><code>BROWSER=phantom bundle exec rspec</code></p>
+
+<ol>
+<li>Firefox</li>
+</ol>
+
+<p><code>BROWSER=firefox bundle exec rspec</code></p>
+
+<ol>
+<li>IE - coming soon</li>
+</ol>
+
+<p>Chrome is not supported due to <a href="https://code.google.com/p/chromedriver/issues/detail?id=887#makechanges">this issue</a> with ChromeDriver.  Feel free to go <a href="https://code.google.com/p/chromedriver/issues/detail?id=887#makechanges">here</a> and pester the chromedriver team to fix it.</p>
 
 <h2>Accessing DOM section in a controller</h2>
 
@@ -865,40 +895,21 @@ Lastly the app folder of all gems that start with volt are checked.  They are ch
 
 <p>Volt provides a data store collection on the front-end and the back-end.  In store, all plural names are assumed to be collections (like an array), and all singular are assumed to be a model (like a hash).</p>
 
-<pre class='prettyprint lang-ruby'><code>store._things
-</code></pre>
+<p><code>ruby
+store._things
+</code></p>
 
-<p><strong>Work in process</strong></p>
+<p><strong>Work in progress</strong></p>
 
-<table><thead>
-<tr>
-<th>state</th>
-<th>events bound</th>
-<th>description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>not_loaded</td>
-<td>no</td>
-<td>no events and no one has accessed the data in the model</td>
-</tr>
-<tr>
-<td>loading</td>
-<td>maybe</td>
-<td>someone either accessed the data or bound an event</td>
-</tr>
-<tr>
-<td>loaded</td>
-<td>yes</td>
-<td>data is loaded and there is an event bound</td>
-</tr>
-<tr>
-<td>dirty</td>
-<td>no</td>
-<td>data was either accessed without binding an event, or an event was bound, but later unbound.</td>
-</tr>
-</tbody></table>
+<p>| state       | events bound | description                                                  |
+|-------------|--------------|--------------------------------------------------------------|
+| not_loaded  | no           | no events and no one has accessed the data in the model      |
+| loading     | maybe        | someone either accessed the data or bound an event           |
+| loaded      | yes          | data is loaded and there is an event bound                   |
+| dirty       | no           | data was either accessed without binding an event, or an event was bound, but later unbound. |</p>
 
 <h1>Contributing</h1>
 
-<p>You want to contribute?  Great!  Thanks for being awesome!  At the moment, we have a big internal todo list, hop on #voltrb on freenode (irc) so we don&#39;t duplicate work.  Pull requests are always welcome, but asking about helping on IRC should save some duplication.</p>
+<p>You want to contribute?  Great!  Thanks for being awesome!  At the moment, we have a big internal todo list, hop on https://gitter.im/voltrb/volt so we don&#39;t duplicate work.  Pull requests are always welcome, but asking about helping on gitter should save some duplication.</p>
+
+<p><a href="https://pledgie.com/campaigns/26731"><img src="https://pledgie.com/campaigns/26731.png?skin_name=chrome" alt="Pledgie"></a></p>
