@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'volt', '0.7.16'
+gem 'volt', '0.7.18'
 
 
 # The following gem's are optional for themeing

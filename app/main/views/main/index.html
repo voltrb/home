@@ -26,7 +26,7 @@
     <div class='row'>
       <div class='col-md-6 col-md-offset-3'>
         <h2>Make the most of your time.</h2>
-        <p>Volt is a reactive web framework where your ruby code runs on both the server and the client (via <a href='http://opalrb.org/' target='_blank'>opal</a>). The dom automatically updates as the user interacts with the page, intelligently updating only the nodes that need to be changed. Data can easily be stored on the page, in a cookie, or in a database powered by <a href='http://www.mongodb.org/' target='_blank'>MongoDB</a>.  Take a look at the demo below, or jump into <a href='/getting_started'>getting started</a>.</p>
+        <p>Volt is a reactive web framework where your Ruby code runs both on the server and the client (via <a href='http://opalrb.org/' target='_blank'>opal</a>). The DOM automatically updates as the user interacts with the page, intelligently updating only the nodes that need to be changed. Data can easily be stored on the page, in a cookie, or in a database powered by <a href='http://www.mongodb.org/' target='_blank'>MongoDB</a>.  Take a look at the demo below, or jump into <a href='/getting_started'>getting started</a>.</p>
       </div>
     </div>
     <br /><br />
@@ -47,7 +47,7 @@
       </div>
       <div class='col-md-6'>
         <h2>Reactive makes syncing easy.</h2>
-        <p>Enter your name to the left to check out the awesome syncage.  We use these "&#123; &#125;" mustache looking things to run ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
+        <p>Enter your name to the left to check out the awesome synchronization. We use these "&#123; &#125;" mustache looking things to run Ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
       </div>
     </div>
 
@@ -81,7 +81,7 @@
 
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
-        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._items[0]._text' />")}</code>.  You'll notice that we can sync data on any model in the store collection.  The <code class='prettyprint'>{{{{_text}}}}</code> attribute is automatically synced between any clients.  Pretty easy right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
+        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._items[0]._text' />")}</code>.  You'll notice that we can sync data on any model in the store collection.  The <code class='prettyprint'>{{{{_text}}}}</code> attribute is automatically synced between any clients.  Pretty easy, right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
       </div>
     </div> -->
 
