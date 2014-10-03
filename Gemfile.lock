@@ -1,7 +1,8 @@
 PATH
   remote: /Users/ryanstout/Sites/volt/volt
   specs:
-    volt (0.8.0)
+    volt (0.8.1)
+      bundler (>= 1.5)
       capybara (~> 2.4.2)
       chromedriver2-helper (~> 0.0.8)
       listen (~> 2.7.0)
