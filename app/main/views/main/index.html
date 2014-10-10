@@ -19,7 +19,7 @@
   </div>
   <div class='blue1'>
     <div class='container text-center'>
-      {#template 'social_buttons'}
+      {{ template 'social_buttons' }}
     </div>
   </div>
   <div class='container'>
@@ -37,17 +37,17 @@
         <div class='well'>
           <div class='row'>
             <div class='col-md-6'>
-              <input type='text' value='{_name}' class='form-control' placeholder='Enter your name...'>
+              <input type='text' value='{{ _name }}' class='form-control' placeholder='Enter your name...'>
             </div>
             <div class='col-md-6'>
-              <label>Name:</label> {_name}
+              <label>Name:</label> {{ _name }}
             </div>
           </div>
         </div>
       </div>
       <div class='col-md-6'>
         <h2>Reactive makes syncing easy.</h2>
-        <p>Enter your name to the left to check out the awesome synchronization. We use these "&#123; &#125;" mustache looking things to run Ruby in your view.  <code class='prettyprint lang-html'>{escape("<input type='text' value='_name' />")}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{{_name}}}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{{_name}}}}</code>.</p>
+        <p>Enter your name to the left to check out the awesome synchronization. We use these "&#123;&#123; &#125;&#125;" mustache looking things to run Ruby in your view.  <code class='prettyprint lang-html'>{{ escape("<input type='text' value='{{ _name }}' />") }}</code> creates an input field with a value always tied to _name.  Update name in the controller, the field will change, and vice versa.  Want to display the data in <code class='prettyprint'>{{{ {{ _name }} }}}</code> anywhere in the view?  Just put <code class='prettyprint'>{{{ {{ _name }} }}}</code>.</p>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
               <span class='help-block'>Keep it clean kids.</span>
             </div>
             <div class='col-md-9'>
-              <textarea value='{store._items[0]._text}' class='form-control' rows='4' placeholder='Enter anything you want...' />
+              <textarea value='{{ store._items[0]._text }}' class='form-control' rows='4' placeholder='Enter anything you want...' />
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@
 
     <div class='row'>
       <div class='col-md-8 col-md-offset-2'>
-        <p>To save data, we simply write <code class='prettyprint lang-html'>{escape("<textarea value='store._items[0]._text' />")}</code>.  You'll notice that we can sync data on any model in the store collection.  The <code class='prettyprint'>{{{{_text}}}}</code> attribute is automatically synced between any clients.  Pretty easy, right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
+        <p>To save data, we simply write <code class='prettyprint lang-html'>{{ escape("<textarea value='store._items[0]._text' />") }}</code>.  You'll notice that we can sync data on any model in the store collection.  The <code class='prettyprint'>{{{ {{ _text }} }}}</code> attribute is automatically synced between any clients.  Pretty easy, right?  There is a long list of locations where we can store data, including page, store, params and session.  Store is the one that saves in the MongoDB.  You can probably guess where the rest are stored.</p>
       </div>
     </div> -->
 
@@ -97,22 +97,22 @@
     <div class='row'>
       <div class='col-md-4 col-md-offset-1'>
         <div class='well'>
-          {#each _items as item}
-            <label class='checkbox {#if item._complete}complete{/}'>
-              <input type='checkbox' checked='{item._complete}' />
-              {item._name}
+          {{ _items.each do |item| }}
+            <label class='checkbox {{ if item._complete }}complete{{ end }}'>
+              <input type='checkbox' checked='{{ item._complete }}' />
+              {{ item._name }}
             </label>
-          {/}
+          {{ end }}
         </div>
       </div>
       <div class='col-md-6'>
         <ul class='nav nav-tabs pre-tabs'>
-          <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
+          <li class='{{ _tabs._h1.or("active") }}' e-click='select(event)'>
             <a>views/home.html</a>
           </li>
         </ul>
         <pre class='pre-with-tabs'>
-<code class='active prettyprint'>{escape("{#each _items as item}\r  <label class='checkbox {#if item._complete}complete{/}'>\r    <input type='checkbox' checked='{item._complete}' />\r    {item._name}\r  </label>\r{/}")}</code></pre>
+<code class='active prettyprint'>{{ escape("{{ _items.each do |item| }}\r  <label class='checkbox {{ if item._complete }}complete{{ end }}'>\r    <input type='checkbox' checked='{{ item._complete }}' />\r    {{ item._name }}\r  </label>\r{{ end }}")}</code></pre>
       </div>
     </div>
 
@@ -124,49 +124,49 @@
         <div class='well'>
           <div class='row'>
             <div class='col-md-6'>
-              <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+              <h4>{{ _contacts.or([]).size }} Contact{{ if _contacts.size != 1 }}s{{ end }}</h4>
               <table>
-                {#if _contacts}
-                  {#each _contacts as contact}
-                    <tr e-click="set_index(index)" class="{#if params._index.to_i == index}selected{/}">
-                      <td>{contact._name}</td>
+                {{ if _contacts }}
+                  {{_contacts.each do |contact| }}
+                    <tr e-click="set_index(index)" class="{{ if params._index.to_i == index }}selected{{ end }}">
+                      <td>{{ contact._name }}</td>
                       <td><button e-click='remove_contact(index)'>X</button></td>
                     </tr>
-                  {/}
-                {#else}
+                  {{ end }}
+                {{ else }}
                   <p>Add a contact above</p>
-                {/}
+                {{ end }}
               </table>
             </div>
             <div class='col-md-6'>
-              <h4>{_current_contact._name.or('No Contact Selected')}</h4>
-              {#if _current_contact}
-                <input type='text' value='{_current_contact._name}' class='form-control' placeholder="Enter a name..." />
-                <textarea value='{_current_contact._address}' class='form-control' placeholder="Enter {_current_contact._name}'s address..." />
-              {#else}
+              <h4>{{ _current_contact._name.or('No Contact Selected') }}</h4>
+              {{ if _current_contact }}
+                <input type='text' value='{{ _current_contact._name }}' class='form-control' placeholder="Enter a name..." />
+                <textarea value='{{ _current_contact._address }}' class='form-control' placeholder="Enter {{ _current_contact._name }}'s address..." />
+              {{ else }}
                 <p>Please elect a contact.</p>
-              {/}
+              {{ end }}
             </div>
           </div>
         </div>
       </div>
       <div class='col-md-6'>
-        <p>Let's add a way to select and edit a contact.  We add a wrapper around each contact with <code class='prettyprint'>{escape("e-click='{set_index(index)}'")}</code>.  When clicked, this triggers the controller's set_index method.</p>
+        <p>Let's add a way to select and edit a contact.  We add a wrapper around each contact with <code class='prettyprint'>{{ escape("e-click='set_index(index)'") }}</code>.  When clicked, this triggers the controller's set_index method.</p>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6 col-md-offset-3'>
         <ul class='nav nav-tabs pre-tabs'>
-          <li class='{_tabs._h1.or("active")}' e-click='select(event)'>
+          <li class='{{ _tabs._h1.or("active") }}' e-click='select(event)'>
             <a>views/home.html</a>
           </li>
-          <li class='{_tabs._h2}' e-click='select(event)'>
+          <li class='{{ _tabs._h2 }}' e-click='select(event)'>
             <a>index_controller.rb</a>
           </li>
         </ul>
         <pre class='pre-with-tabs'>
-<code class='active prettyprint lang-html'>{escape("...\r\r{#each _contacts as contact}\r  <div e-click='set_index(index)'>\r    {contact._name}\r    <button e-click='remove_contact(index)'>X</button>\r  </div>\r{/}\n")}{escape("{#if _current_contact}\r  <input type='text' value='{_current_contact._name}' />\r  <textarea value='{_current_contact._address}' />\r{#else}\r  <p>Please select a contact.</p>\r{/}")}</code><code class='prettyprint'>{escape("...\r\rdef set_index(index)\r  params._index = index\r  self._current_contact = _contacts[params._index.to_i]\rend")}</code></pre>
+<code class='active prettyprint lang-html'>{{ escape("...\r\r{_contacts.each do |contact| }}\r  <div e-click='set_index(index)'>\r    {{ contact._name }}\r    <button e-click='remove_contact(index)'>X</button>\r  </div>\r{{ end }}\n")}{{ escape("{{ if _current_contact }}\r  <input type='text' value='{{ _current_contact._name }}' />\r  <textarea value='{{ _current_contact._address }}' />\r{{ else }}\r  <p>Please select a contact.</p>\r{{ end }}")}</code><code class='prettyprint'>{{ escape("...\r\rdef set_index(index)\r  params._index = index\r  self._current_contact = _contacts[params._index.to_i]\rend") }}</code></pre>
       </div>
     </div>
 
@@ -177,15 +177,15 @@
         <div class='well'>
           <div class='row'>
             <div class='col-md-4'>
-              <h4>{_contacts.or([]).size} Contact{#if _contacts.size != 1}s{/}</h4>
+              <h4>{{ _contacts.or([]).size }} Contact{{ if _contacts.size != 1 }}s{{ end }}</h4>
               <table>
-                {#each _contacts as contact}
+                {{ _contacts.each do |contact| }}
                   <tr>
-                    <td>{contact._name}</td>
+                    <td>{{ contact._name }}</td>
                     <td><button e-click='remove_contact(index)'>X</button></td>
-                    <td><input type='checkbox' value='{contact._mapped}' e-change='update_map' /></td>
+                    <td><input type='checkbox' value='{{ contact._mapped }}' e-change='update_map' /></td>
                   </tr>
-                {/}
+                {{ end }}
               </table>
             </div>
             <div class='col-md-8'>

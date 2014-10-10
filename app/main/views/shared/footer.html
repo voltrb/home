@@ -1,4 +1,11 @@
 <:Body>
+  {{ if url.path == '/docs' }}
+    <style>
+    #footer {
+      display: none;
+    }
+    </style>
+  {{ end }}
   <div id="footer">
     <div class='container'>
       <div class='clearfix'>
@@ -13,13 +20,13 @@
           <a href='/getting_started'>Gem Library</a>
         </div>
         <div class='footer-col'>
-          <a href='/home'>Docs</a>
-          <a href='/home'>Rendering</a>
+          <a href='/docs'>Docs</a>
+          <!-- <a href='/home'>Rendering</a>
           <a href='/home'>Models</a>
           <a href='/home'>Controllers</a>
           <a href='/home'>Components</a>
           <a href='/home'>Controls</a>
-          <a href='/home'>Routes</a>
+          <a href='/home'>Routes</a> -->
         </div>
         <div class='footer-col'>
           <a href='/home'>API</a>
@@ -28,7 +35,7 @@
           <a href='/home'>Community</a>
         </div>
       </div>
-      
+
     </div>
     <div id='footer-bottom'>
       <div class='container text-center'>
