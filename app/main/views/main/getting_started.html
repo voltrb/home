@@ -37,10 +37,10 @@
 
         <p>Instead of syncing data between the client and the server via HTTP, Volt uses a persistent connection between the client and the server. When data is updated on one client, it is updated in the database and any other listening clients (with almost no setup code needed).</p>
 
-        <p>HTML for pages is written in a Handlebars-like template language.  Volt uses data flow/reactive programming to automatically and intelligently propagate changes to the DOM (or any other code wanting to know when a value has been updated). When something in the DOM changes, Volt intelligently updates only the nodes that need to be changed.</p>
+        <p>Pages HTML is written in a template language where you can put ruby between {{{ {{ and }} }}}. Volt uses data flow/reactive programming to automatically and intelligently propagate changes to the DOM (or any other code wanting to know when a value updates). When something in the DOM changes, Volt intelligently updates only the nodes that need to be changed.</p>
 
         <h1 id='requirements'>Requirements</h1>
-        <p></p>
+        <p>Volt requires ruby 2.0 or above.</p>
 
         <h1 id='gem_libary'>Gem Library</h1>
 
