@@ -1,32 +1,4 @@
-switch to https://github.com/jayferd/rouge for highlighting
+# Place your app's docs here.
 
-
-shockingly
-shocking
-amped
-watt
-charged
-current
-power
-wired
-zapped
-sparked
-plug
-supercharge
-
-
-syncing via {_name}
-
-changing class via checkbox
-  - {_complete}
-
-model saving via {store._posts[0]}
-
-association
-  - {_posts[0]._comments << _new_comment}
-
-validation
-
-
-# Run this to convert the github readme into html
-ruby bin/convert_readme.rb
+## New to Volt?
+Be sure to read the volt docs at http://docs.voltframework.com

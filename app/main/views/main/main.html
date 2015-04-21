@@ -1,13 +1,13 @@
 <:Title>
-  {{ template main_path, "title", { controller_group: 'main' } }}
+  {{ view main_path, "title", { controller_group: 'main' } }}
 
 <:Body>
   <div id='wrap'>
     <:volt:notices />
-    {{ template 'shared/header' }}
+    {{ view 'shared/header' }}
     <div id='header-spacer'></div>
-    {{ template main_path, "body", { controller_group: 'main' } }}
+    {{ view main_path, "body", { controller_group: 'main' } }}
   </div>
 
-  {{ template 'shared/footer' }}
+  {{ view 'shared/footer' }}
 

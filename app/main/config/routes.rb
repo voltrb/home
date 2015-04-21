@@ -1,9 +1,10 @@
-get "/getting_started", _action: 'getting_started'
-get "/examples", _action: 'examples'
-get "/docs", _controller: 'docs', _action: 'index'
-get "/api", _action: 'api'
-get "/community", _action: 'community'
-get "/blog", _action: 'blog'
+client "/getting_started", action: 'getting_started'
+client "/examples", action: 'examples'
+client "/docs", controller: 'docs', action: 'index'
+client "/api", action: 'api'
+client "/community", action: 'community'
+client "/blog", controller: 'blog', action: 'index'
+
 
 # The main route
-get '/'
+client '/'
