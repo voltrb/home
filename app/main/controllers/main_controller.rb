@@ -10,11 +10,11 @@ module Main
 
       new_subscribe
 
-      store._items.find({}).then do |result|
-        if result.size == 0
-          store._items << {_text: 'New'}
-        end
-      end
+      # store._items.find({}).then do |result|
+      #   if result.size == 0
+      #     store._items << {_text: 'New'}
+      #   end
+      # end
     end
 
     def new_subscribe
