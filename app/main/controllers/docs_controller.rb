@@ -1,6 +1,14 @@
 module Main
   class DocsController < Volt::ModelController
 
+    def index
+      if params._language.nil?
+        page._iframe_url = "http://docs.voltframework.com"
+      else
+        page._iframe_url = "http://docs.voltframework.com/#{params._language}/index.html"
+      end
+    end
+
     def index_ready
       dom_ready
     end

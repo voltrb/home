@@ -1,0 +1,35 @@
+<:Title>
+  Components - Volt
+
+<:Body>
+  <div class='page-header'>
+    <div class='container'>
+      <h1>Components</h1>
+    </div>
+  </div>
+  <div class='container'>
+    {{ if store._rubygems_components.empty? }}
+    <p>Loading a list of the current components that can be found on <a href='https://rubygems.org/search?query=volt-'>RubyGems.org</a>.</p>
+
+    <div class="well">
+      Loading...
+    </div>
+    {{ else }}
+
+    <p>This is a list of the current {{ store._rubygems_components.count }} components that can be found on <a href='https://rubygems.org/search?query=volt-'>RubyGems.org</a>.</p>
+
+    <table class='components'>
+      {{ store._rubygems_components.each do |component| }}
+        <tr>
+          <td>
+            <a href='https://rubygems.org/gems/{{ component._name }}'>
+              {{ component._name }}
+            </a>
+          </td>
+          <td>{{ component._info }}</td>
+        </tr>
+      {{ end }}
+    </table>
+    {{ end }}
+
+  </div>

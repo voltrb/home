@@ -1,5 +1,5 @@
 <:Body>
-  {{ if url.path == '/docs' || url.path == '/blog' }}
+  {{ if url.path =~ /\/docs/ || url.path == '/blog' }}
     <style>
     #footer {
       display: none;
@@ -11,16 +11,15 @@
       <div class='clearfix'>
         <div class='footer-col'>
           <a href='/home'>Home</a>
-        </div>
-        <div class='footer-col'>
-          <a href='/getting_started'>Getting Started</a>
-          <a href='/getting_started'>Overview</a>
-          <a href='/getting_started'>Installation</a>
-          <a href='/getting_started'>Examples</a>
-          <a href='/getting_started'>Gem Library</a>
+          <a href="https://www.youtube.com/watch?v=P27EPQ4ne7o">Intro video</a>
+          <a href="https://www.youtube.com/watch?v=KbFtIt7-ge8">Todo video tutorial</a>
         </div>
         <div class='footer-col'>
           <a href='/docs'>Docs</a>
+          <a href='/docs/en'>English</a>
+          <a href='/docs/ja'>Japanese</a>
+          <a href='/components'>Components</a>
+
           <!-- <a href='/home'>Rendering</a>
           <a href='/home'>Models</a>
           <a href='/home'>Controllers</a>
@@ -29,17 +28,28 @@
           <a href='/home'>Routes</a> -->
         </div>
         <div class='footer-col'>
-          <a href='/docs'>API</a>
+          <a href='/blog'>Blog</a>
         </div>
+        <!-- <div class='footer-col'> -->
+          <!-- <a href='/getting_started'>Getting Started</a> -->
+          <!-- <a href='/getting_started'>Overview</a>
+          <a href='/getting_started'>Installation</a>
+          <a href='/getting_started'>Examples</a>
+          <a href='/getting_started'>Gem Library</a> -->
+        <!-- </div> -->
+
         <div class='footer-col'>
           <a href='/community'>Community</a>
+          <a href='https://github.com/voltrb/volt'>Github</a>
+          <a href='https://gitter.im/voltrb/volt'>Gitter</a>
+          <a href="https://stackoverflow.com/questions/tagged/voltrb">StackOverflow</a>
         </div>
       </div>
 
     </div>
     <div id='footer-bottom'>
       <div class='container text-center'>
-        <p>&copy; Volt 2015</p>
+        <p>&copy; Volt {{ Time.now.year }}</p>
       </div>
     </div>
   </div>

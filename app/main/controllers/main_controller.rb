@@ -113,6 +113,10 @@ module Main
       end
     end
 
+    def components
+      RubyGemsTask.search_components
+    end
+
     private
       # the main template contains a #template binding that shows another
       # template.  This is the path to that template.  It may change based
