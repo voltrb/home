@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/ryanstout/Sites/volt/volt
+GIT
+  remote: git://github.com/voltrb/volt.git
+  revision: 61d4708086827ca7aab60f7dea20fd45a5695452
   specs:
     volt (0.9.5)
       bcrypt (~> 3.1.9)
