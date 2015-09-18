@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'volt', github: 'voltrb/volt'#'0.9.5.pre4'
+# gem 'volt', github: 'voltrb/volt'#'0.9.5.pre4'
+gem 'volt', path: '/Users/ryanstout/Sites/volt/volt'
 
 # volt uses mongo as the default data store.
 gem 'volt-mongo', '~> 0.1.0'
 
 # The following gem's are optional for themeing
 # Twitter bootstrap
-gem 'volt-bootstrap', '~> 0.0.10'
+gem 'volt-bootstrap'
 
 # Simple theme for bootstrap, remove to theme yourself.
 gem 'volt-bootstrap_jumbotron_theme', '~> 0.1.0'
